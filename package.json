@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/sergiomieic/TDIN-Enterprise/issues"
   },
-  "homepage": "https://github.com/sergiomieic/TDIN-Enterprise#readme"
+  "homepage": "https://github.com/sergiomieic/TDIN-Enterprise#readme",
+  "dependencies": {
+    "socket.io": "^2.0.1"
+  }
 }

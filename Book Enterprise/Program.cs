@@ -28,7 +28,7 @@ namespace Book_Enterprise
             //("ws://localhost:9000/socket.io/?EIO=2&transport=websocket");
 
             ClientWebSocket ws = new ClientWebSocket();
-            var uri = new Uri("ws://localhost:9000/socket.io/?EIO=2&transport=websocket");
+            var uri = new Uri("ws://localhost:3000/socket.io/?EIO=2&transport=websocket");
 
             await ws.ConnectAsync(uri, CancellationToken.None);
 
