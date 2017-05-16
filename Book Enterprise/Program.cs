@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net; //For our IPAddress
 using System.Net.Sockets; //For our TcpClient
 using System.Windows.Forms;
+using System.Net.WebSockets;
 
 namespace Book_Enterprise
 {
@@ -22,7 +23,7 @@ namespace Book_Enterprise
            
 
             TcpClient client = new TcpClient();
-            client.Connect(IPAddress.Loopback, 3000); //Connect to the server on our local host IP address, listening to port 3000
+            client.Connect(IPAddress.Loopback, 9000); //Connect to the server on our local host IP address, listening to port 3000
 
             NetworkStream clientStream = client.GetStream();
 
@@ -47,6 +48,22 @@ namespace Book_Enterprise
             System.Threading.Thread.Sleep(10000); //Sleep for 10 seconds
 
             Application.Run(new Form1());
+        }
+
+        private static void init()
+        {
+            // start socket connection
+            using (var ws = new WebSocket("ws://localhost:9000/socket.io/?EIO=2&transport=websocket"))
+            {
+                ws.OnMessage += (sender, e) =>
+                    API.consoleOutput("Message: " + e.Data);
+
+                ws.OnError += (sender, e) =>
+                    API.consoleOutput("Error: " + e.Message);
+
+                ws.Connect();
+                ws.Send("server");
+            }
         }
     }
 }

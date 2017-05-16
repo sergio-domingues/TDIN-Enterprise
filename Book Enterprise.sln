@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book Enterprise", "Book Ent
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "node", "node", "{0D2DE099-A653-4B30-8BDE-02AF57206CD4}"
 	ProjectSection(SolutionItems) = preProject
+		package.json = package.json
 		server.js = server.js
 	EndProjectSection
 EndProject

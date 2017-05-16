@@ -1,11 +1,9 @@
 // JavaScript source code
 
-var net = require('net');
+console.log("starting js");
 
-var server = net.createServer(function (socket) { //Create the server and pass it the function which will write our data
-    socket.write("Hello\n");
-    socket.write("World!\n");
-    socket.end("End of communications.");
+const io = require('socket.io')(9000);
+
+io.on('connection', (socket) => {
+    console.log('Connected');   
 });
-
-server.listen(3000); //This is the port number we're listening to
