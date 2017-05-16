@@ -1,0 +1,16 @@
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\Book enterprise\Book Enterprise\Book Enterprise\bin\Debug\Book Enterprise.exe.config
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\Book enterprise\Book Enterprise\Book Enterprise\obj\Debug\Book Enterprise.csprojResolveAssemblyReference.cache
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\Book enterprise\Book Enterprise\Book Enterprise\obj\Debug\Book_Enterprise.Properties.Resources.resources
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\Book enterprise\Book Enterprise\Book Enterprise\obj\Debug\Book Enterprise.csproj.GenerateResource.Cache
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\Book enterprise\Book Enterprise\Book Enterprise\bin\Debug\Book Enterprise.exe
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\Book enterprise\Book Enterprise\Book Enterprise\bin\Debug\Book Enterprise.pdb
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\Book enterprise\Book Enterprise\Book Enterprise\obj\Debug\Book Enterprise.exe
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\Book enterprise\Book Enterprise\Book Enterprise\obj\Debug\Book Enterprise.pdb
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\bin\Debug\Book Enterprise.exe.config
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Book Enterprise.exe
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Book Enterprise.pdb
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\bin\Debug\Book Enterprise.exe
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\bin\Debug\Book Enterprise.pdb
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Book Enterprise.csprojResolveAssemblyReference.cache
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Book_Enterprise.Properties.Resources.resources
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Book Enterprise.csproj.GenerateResource.Cache
