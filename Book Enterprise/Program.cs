@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net; //For our IPAddress
-using System.Net.Sockets; //For our TcpClient
 using System.Windows.Forms;
 using System.Net.WebSockets;
+using System.Threading;
 
 namespace Book_Enterprise
 {
@@ -20,50 +17,51 @@ namespace Book_Enterprise
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           
-
-            TcpClient client = new TcpClient();
-            client.Connect(IPAddress.Loopback, 9000); //Connect to the server on our local host IP address, listening to port 3000
-
-            NetworkStream clientStream = client.GetStream();
-
-            Console.WriteLine("Starting to read info");
-
-            while (clientStream.DataAvailable) //While the network stream say's there is data to be read
-            {
-                byte[] inMessage = new byte[4096];
-                int bytesRead = 0;
-                try
-                {
-                    bytesRead = clientStream.Read(inMessage, 0, 4096);
-                }
-                catch { /*Catch exceptions and handle them here*/ }
-
-                ASCIIEncoding encoder = new ASCIIEncoding();
-                Console.WriteLine(encoder.GetString(inMessage, 0, bytesRead));
-            }                      
-
-            client.Close();
-
-            System.Threading.Thread.Sleep(10000); //Sleep for 10 seconds
-
+            var clientTask1 = Client();
+            Console.ReadLine();
+            
             Application.Run(new Form1());
         }
 
-        private static void init()
+        static async Task Client()
         {
-            // start socket connection
-            using (var ws = new WebSocket("ws://localhost:9000/socket.io/?EIO=2&transport=websocket"))
+            //("ws://localhost:9000/socket.io/?EIO=2&transport=websocket");
+
+            ClientWebSocket ws = new ClientWebSocket();
+            var uri = new Uri("ws://localhost:9000/socket.io/?EIO=2&transport=websocket");
+
+            await ws.ConnectAsync(uri, CancellationToken.None);
+
+            var buffer = new byte[1024];
+            while (true)
             {
-                ws.OnMessage += (sender, e) =>
-                    API.consoleOutput("Message: " + e.Data);
+                var segment = new ArraySegment<byte>(buffer);
 
-                ws.OnError += (sender, e) =>
-                    API.consoleOutput("Error: " + e.Message);
+                var result = await ws.ReceiveAsync(segment, CancellationToken.None);
 
-                ws.Connect();
-                ws.Send("server");
-            }
+                if (result.MessageType == WebSocketMessageType.Close)
+                {
+                    await ws.CloseAsync(WebSocketCloseStatus.InvalidMessageType, "I don't do binary", CancellationToken.None);
+                    return;
+                }
+
+                int count = result.Count;
+                while (!result.EndOfMessage)
+                {
+                    if (count >= buffer.Length)
+                    {
+                        await ws.CloseAsync(WebSocketCloseStatus.InvalidPayloadData, "That's too long", CancellationToken.None);
+                        return;
+                    }
+
+                    segment = new ArraySegment<byte>(buffer, count, buffer.Length - count);
+                    result = await ws.ReceiveAsync(segment, CancellationToken.None);
+                    count += result.Count;
+                }
+
+                var message = Encoding.UTF8.GetString(buffer, 0, count);
+                Console.WriteLine(">" + message);
+            }        
         }
     }
 }
