@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.WebSockets;
 using System.Threading;
+using SocketIOClient;
+using System.Net.Sockets;
+using Quobject.SocketIoClientDotNet.Client;
+using System.Collections.Generic;
 
 namespace Book_Enterprise
 {
@@ -17,15 +21,19 @@ namespace Book_Enterprise
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var clientTask1 = Client();
-            Console.ReadLine();
-            
-            Application.Run(new Form1());
-        }
 
-        static async Task Client()
+            Uri serverUri = new Uri("http://localhost:3000/");
+
+            CommunicationHandler commHandler = new CommunicationHandler(serverUri);
+            
+            //sendMsg(socket);
+
+            Application.Run(new Form1(commHandler));
+        }
+       
+        static async Task Cli()
         {
-            //("ws://localhost:9000/socket.io/?EIO=2&transport=websocket");
+            //("ws://localhost:3000/socket.io/?EIO=2&transport=websocket");
 
             ClientWebSocket ws = new ClientWebSocket();
             var uri = new Uri("ws://localhost:3000/socket.io/?EIO=2&transport=websocket");

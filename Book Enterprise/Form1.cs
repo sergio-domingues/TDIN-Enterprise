@@ -12,9 +12,17 @@ namespace Book_Enterprise
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        protected CommunicationHandler commHandler;
+
+        public Form1(CommunicationHandler handler)
         {
+            commHandler = handler;
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            commHandler.sendMsg();
         }
     }
 }
