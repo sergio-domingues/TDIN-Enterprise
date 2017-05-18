@@ -16,13 +16,14 @@ io.on('connection', function (socket) {
     console.log('a user connected');
     //socket.emit('news', { hello: 'world' });
 
-    socket.on('msg', function (msg) {
-        console.log('message received: ', msg);
+    socket.on('sell', function (msg) {
+        console.log('message received: ', 'sell\n', msg);
         socket.emit("info", { data: "data", more: "data" });       
     });
 
-    socket.on('response', function (msg) {
-        console.log('message received: ', msg);
+    socket.on('order', function (msg) {
+        console.log('message received: ', 'order\n', msg);
+        socket.emit("info", { data: "data", more: "data" });
     });
 
     /* socket.disconnect() or socket.close() triggers disconnect event */
@@ -31,8 +32,6 @@ io.on('connection', function (socket) {
         io.emit('user disconnected');
     });
 });
-
-
 
 http.listen(3000, function () {
     console.log('listening on *:3000');

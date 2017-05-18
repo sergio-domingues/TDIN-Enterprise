@@ -15,6 +15,7 @@ namespace Book_Enterprise
        public CommunicationHandler(Uri uri){
             serverUri = uri;
             socket = createSocket();
+            receiveMsg();
         }
 
         protected Socket createSocket()
@@ -30,10 +31,9 @@ namespace Book_Enterprise
         }
 
 
-        public void sendMsg()
-        {
-            socket.Emit("msg", "msg");
-            receiveMsg();
+        public void sendMsg(string msgType, string msg)
+        {            
+            socket.Emit(msgType, msg);
         }
         public void receiveMsg()
         {
