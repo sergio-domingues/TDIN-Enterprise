@@ -9,9 +9,11 @@ using System.Net.Sockets;
 using Quobject.SocketIoClientDotNet.Client;
 using System.Collections.Generic;
 
-namespace Book_Enterprise
+using Common;
+
+namespace Store
 {
-    static class Program
+    static class Store
     {
         /// <summary>
         /// The main entry point for the application.
@@ -22,11 +24,16 @@ namespace Book_Enterprise
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Uri serverUri = new Uri("http://localhost:3000/");
-
-            CommunicationHandler commHandler = new CommunicationHandler(serverUri);
+            //store & warehouse URIs
+            Uri storeUri = new Uri("http://localhost:3500/");            
             
-            Application.Run(new Form1(commHandler));
-        }       
+            //todo on handlers add initial get method to retrieve items for the GUIs
+
+            StoreCommunicationHandler storeHandler = new StoreCommunicationHandler(storeUri);
+           
+            StoreGUI storeGUI = new StoreGUI(storeHandler);            
+            
+            Application.Run(storeGUI);
+        }
     }
 }

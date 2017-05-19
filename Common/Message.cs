@@ -1,12 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Book_Enterprise
+namespace Common
 {
     [Serializable]
     public abstract class Message
@@ -22,6 +18,8 @@ namespace Book_Enterprise
         }
 
         public Message() { }
+
+        abstract public string getJSON();
     }
 
     [Serializable]
@@ -36,19 +34,14 @@ namespace Book_Enterprise
             this.totalPrice = totalPrice;
         }
 
-        public string getJSON()
+        override public string getJSON()
         {
-            //todo
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
             Console.WriteLine(JsonConvert.SerializeObject(this, Formatting.Indented));
 
             return json;
         }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     [Serializable]
@@ -66,18 +59,29 @@ namespace Book_Enterprise
             this.id = id;
         }
 
-        public string getJSON()
+        override public string getJSON()
         {
-            //todo
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
             Console.WriteLine(JsonConvert.SerializeObject(this, Formatting.Indented));
 
             return json;
         }
+    }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
+    [Serializable]
+    public class ShipOrderMessage
+    {
+        public Guid id;
+        public int qtd;
+
+        public ShipOrderMessage() { }
+
+        public string getJSON()
         {
-            throw new NotImplementedException();
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+            Console.WriteLine(JsonConvert.SerializeObject(this, Formatting.Indented));
+
+            return json;
         }
     }
 

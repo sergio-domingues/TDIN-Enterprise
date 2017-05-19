@@ -1,0 +1,14 @@
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\Common.dll.config
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\Common.dll
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\Common.pdb
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\EngineIoClientDotNet.dll
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\SocketIOClient.dll
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\SocketIoClientDotNet.dll
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\WebSocket4Net.dll
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\SocketIOClient.pdb
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\SocketIOClient.xml
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\bin\Debug\WebSocket4Net.pdb
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\obj\Debug\Common.dll
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Common\obj\Debug\Common.pdb

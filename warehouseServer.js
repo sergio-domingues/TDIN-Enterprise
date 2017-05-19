@@ -1,5 +1,7 @@
 // JavaScript source code
 
+// JavaScript source code
+
 console.log("starting js");
 
 var app = require('express')();
@@ -16,15 +18,17 @@ io.on('connection', function (socket) {
     console.log('a user connected');
     //socket.emit('news', { hello: 'world' });
 
+    /*
     socket.on('sell', function (msg) {
         console.log('message received: ', 'sell\n', msg);
-        socket.emit("info", { data: "data", more: "data" });       
+        socket.emit("info", { data: "data", more: "data" });
     });
 
     socket.on('order', function (msg) {
         console.log('message received: ', 'order\n', msg);
         socket.emit("info", { data: "data", more: "data" });
     });
+    */
 
     /* socket.disconnect() or socket.close() triggers disconnect event */
     socket.on('disconnect', function () {
@@ -33,6 +37,6 @@ io.on('connection', function (socket) {
     });
 });
 
-http.listen(3000, function () {
-    console.log('listening on *:3000');
+http.listen(4000, function () {
+    console.log('listening on *:4000');
 });
