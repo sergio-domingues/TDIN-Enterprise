@@ -1,7 +1,3 @@
-C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Store.csprojResolveAssemblyReference.cache
-C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Store.StoreGUI.resources
-C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Book_Enterprise.Properties.Resources.resources
-C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Store.csproj.GenerateResource.Cache
 C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\bin\Debug\Book Enterprise.exe.config
 C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\bin\Debug\Book Enterprise.exe
 C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\bin\Debug\Book Enterprise.pdb
@@ -15,5 +11,9 @@ C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterpri
 C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\bin\Debug\SocketIOClient.pdb
 C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\bin\Debug\SocketIOClient.xml
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Store.csprojResolveAssemblyReference.cache
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Store.StoreGUI.resources
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Book_Enterprise.Properties.Resources.resources
+C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Store.csproj.GenerateResource.Cache
 C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Book Enterprise.exe
 C:\Users\Sérgio\Desktop\MIEIC\4º ano\2º semestre\TDIN\Projectos\TDIN-Enterprise\Book Enterprise\obj\Debug\Book Enterprise.pdb

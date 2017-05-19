@@ -19,11 +19,15 @@ namespace Warehouse
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-           Uri warehouseUri = new Uri("http://localhost:4000/");
+            Uri warehouseUri = new Uri("http://localhost:3500/");
+
+            //todo on handlers add initial get method to retrieve items for the GUIs
 
             WarehouseCommunicationHandler warehouseHandler = new WarehouseCommunicationHandler(warehouseUri);
+         
+            WarehouseGUI warehouseGUI = new WarehouseGUI(warehouseHandler);
 
-            Application.Run(new WarehouseGUI(warehouseHandler));
+            Application.Run(warehouseGUI);
         }
     }
 }

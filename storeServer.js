@@ -14,7 +14,8 @@ app.get('/', function (req, res) {
 io.on('connection', function (socket) {
 
     console.log('a user connected');
-    socket.emit('ack', { hello: 'world' });
+
+    //socket.emit('ack', { hello: 'world' });
 
     socket.on('sell', function (msg) {
         console.log('message received: ', 'sell\n', msg);
@@ -34,7 +35,7 @@ io.on('connection', function (socket) {
     /* socket.disconnect() or socket.close() triggers disconnect event */
     socket.on('disconnect', function () {
         console.log("user disconnected");
-        io.emit('user disconnected');
+        //io.emit('user disconnected');
     });
 });
 

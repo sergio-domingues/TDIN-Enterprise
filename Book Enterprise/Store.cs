@@ -25,22 +25,14 @@ namespace Store
             Application.SetCompatibleTextRenderingDefault(false);
 
             //store & warehouse URIs
-            Uri storeUri = new Uri("http://localhost:3500/");
-               
+            Uri storeUri = new Uri("http://localhost:3500/");            
             
-
             //todo on handlers add initial get method to retrieve items for the GUIs
 
-            //handlers
             StoreCommunicationHandler storeHandler = new StoreCommunicationHandler(storeUri);
-           // WarehouseCommunicationHandler warehouseHandler = new WarehouseCommunicationHandler(warehouseUri);
-
-            //GUIs
-            StoreGUI storeGUI = new StoreGUI(storeHandler);
-           // WarehouseGUI warehouseGUI = new WarehouseGUI(warehouseHandler);
+           
+            StoreGUI storeGUI = new StoreGUI(storeHandler);            
             
-
-            //warehouseGUI.Show();
             Application.Run(storeGUI);
         }
     }

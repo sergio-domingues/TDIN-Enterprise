@@ -70,38 +70,54 @@ namespace Common
         }
     }
 
-    public class WarehouseCommunicationHandler //: CommunicationHandler
-    {
-        public Socket storeSocket;
+    public class WarehouseCommunicationHandler : CommunicationHandler
+    {        
+        public WarehouseCommunicationHandler(Uri uri) : base(uri)
+        {
+            receiveMsg();
+        }
 
+        override public void receiveMsg()
+        {
+            socket.On("ack", (data) =>
+            {
+                Console.WriteLine(data);
+                //socket.Emit("response", "received");
+                // events.Enqueue(data);
+                // ManualResetEvent.Set();
+            });
+        }
+        
+
+        /*public Socket storeSocket;
+        public Uri storeURI;
         //todo
         public WarehouseCommunicationHandler(Uri uri) //: base(uri)
         {
-            Console.WriteLine("looop ?»?");
+            storeURI = uri;
+            storeSocket = createStoreSocket();
+            Console.WriteLine(">>>>>>>CREATED SOCKET");
 
-            storeSocket = IO.Socket(new Uri("http://localhost:3500/"));
+            //receiveMsg();
+        }
+
+        protected Socket createStoreSocket()
+        {
+            var storeSocket = IO.Socket(storeURI);
 
             storeSocket.On(Socket.EVENT_CONNECT, () =>
             {
                 Console.WriteLine("connected to storesocket");
             });
-            
-            receiveMsg();
+
+            return storeSocket;
         }
-
-         public void receiveMsg()
-         {
-              storeSocket.On("ack", (data) =>
-             {
-                 Console.WriteLine(data);
-             });
-         }
-
+        
         public void sendMsg(string msgType, string msg)
         {
             Console.WriteLine("sending msg on socket from warehouse");
             storeSocket.Emit(msgType, msg);
-        }
-
+        }         
+         */
     }
 }

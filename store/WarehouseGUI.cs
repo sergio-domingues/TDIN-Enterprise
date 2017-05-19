@@ -14,11 +14,11 @@ namespace Warehouse
 {
     public partial class WarehouseGUI : Form
     {
-        private WarehouseCommunicationHandler warehouseHandler;
+        protected WarehouseCommunicationHandler warehouseHandler;
 
         public WarehouseGUI(WarehouseCommunicationHandler warehouseHandler)
         {
-            this.warehouseHandler = warehouseHandler;
+            this.warehouseHandler = warehouseHandler;            
             InitializeComponent();
         }
 
@@ -31,7 +31,7 @@ namespace Warehouse
             {
                 id = Guid.NewGuid(),
                 qtd = 10 + 25
-            }; 
+            };
 
             warehouseHandler.sendMsg("shipping", msg.getJSON());
         }
