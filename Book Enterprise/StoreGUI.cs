@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Common;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,16 +10,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Book_Enterprise
+namespace Store
 {
-    public partial class Form1 : Form
+    public partial class StoreGUI : Form
     {
-        protected CommunicationHandler commHandler;
+        protected StoreCommunicationHandler commHandler;
 
-        public Form1(CommunicationHandler handler)
+        public StoreGUI(StoreCommunicationHandler handler)
         {
-            commHandler = handler;
-            
+            commHandler = handler;            
             InitializeComponent();
         }
 

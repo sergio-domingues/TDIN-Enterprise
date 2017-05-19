@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 io.on('connection', function (socket) {
 
     console.log('a user connected');
-    //socket.emit('news', { hello: 'world' });
+    socket.emit('ack', { hello: 'world' });
 
     socket.on('sell', function (msg) {
         console.log('message received: ', 'sell\n', msg);
@@ -26,6 +26,11 @@ io.on('connection', function (socket) {
         socket.emit("info", { data: "data", more: "data" });
     });
 
+    socket.on('shipping', function (msg) {
+        console.log('message received: ', 'shipping\n', msg);
+        socket.emit("ack", "received ship order");
+    });
+
     /* socket.disconnect() or socket.close() triggers disconnect event */
     socket.on('disconnect', function () {
         console.log("user disconnected");
@@ -33,6 +38,6 @@ io.on('connection', function (socket) {
     });
 });
 
-http.listen(3000, function () {
-    console.log('listening on *:3000');
+http.listen(3500, function () {
+    console.log('listening on *:3500');
 });

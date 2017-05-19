@@ -1,6 +1,6 @@
-﻿namespace Book_Enterprise
+﻿namespace Store
 {
-    partial class Form1
+    partial class StoreGUI
     {
         /// <summary>
         /// Required designer variable.
@@ -54,6 +54,7 @@
             this.listView1.Size = new System.Drawing.Size(141, 160);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // listView2
             // 
@@ -62,6 +63,7 @@
             this.listView2.Size = new System.Drawing.Size(141, 160);
             this.listView2.TabIndex = 10;
             this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
             // 
             // orderButton
             // 
