@@ -1,9 +1,5 @@
 ﻿using Quobject.SocketIoClientDotNet.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Common
 {
@@ -86,38 +82,6 @@ namespace Common
                 // events.Enqueue(data);
                 // ManualResetEvent.Set();
             });
-        }
-        
-
-        /*public Socket storeSocket;
-        public Uri storeURI;
-        //todo
-        public WarehouseCommunicationHandler(Uri uri) //: base(uri)
-        {
-            storeURI = uri;
-            storeSocket = createStoreSocket();
-            Console.WriteLine(">>>>>>>CREATED SOCKET");
-
-            //receiveMsg();
-        }
-
-        protected Socket createStoreSocket()
-        {
-            var storeSocket = IO.Socket(storeURI);
-
-            storeSocket.On(Socket.EVENT_CONNECT, () =>
-            {
-                Console.WriteLine("connected to storesocket");
-            });
-
-            return storeSocket;
-        }
-        
-        public void sendMsg(string msgType, string msg)
-        {
-            Console.WriteLine("sending msg on socket from warehouse");
-            storeSocket.Emit(msgType, msg);
-        }         
-         */
+        }       
     }
 }
