@@ -24,7 +24,7 @@ namespace Warehouse2
 
             WarehouseCommunicationHandler warehouseHandler = new WarehouseCommunicationHandler(warehouseUri);
 
-            GUI warehouseGUI = new GUI(warehouseHandler);
+            warehouseGUI warehouseGUI = new warehouseGUI(warehouseHandler);
 
             Application.Run(warehouseGUI);
         }

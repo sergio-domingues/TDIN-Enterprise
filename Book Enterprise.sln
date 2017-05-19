@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "node", "node", "{0D2DE099-A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{F0AA7452-6A71-40E2-B166-5631C26FF16A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse2", "Warehouse2\Warehouse2.csproj", "{8E6CD536-C3D3-4C7A-8EC6-1D524E8D259E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse", "Warehouse2\Warehouse.csproj", "{8E6CD536-C3D3-4C7A-8EC6-1D524E8D259E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

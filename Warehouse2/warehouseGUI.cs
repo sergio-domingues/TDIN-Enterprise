@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace Warehouse2
 {
-    public partial class GUI : Form
+    public partial class warehouseGUI : Form
     {
         protected WarehouseCommunicationHandler warehouseHandler;
 
-        public GUI(WarehouseCommunicationHandler warehouseHandler)
+        public warehouseGUI(WarehouseCommunicationHandler warehouseHandler)
         {
             this.warehouseHandler = warehouseHandler;
             InitializeComponent();

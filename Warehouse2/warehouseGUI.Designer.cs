@@ -1,6 +1,6 @@
 ﻿namespace Warehouse2
 {
-    partial class GUI
+    partial class warehouseGUI
     {
         /// <summary>
         /// Required designer variable.
