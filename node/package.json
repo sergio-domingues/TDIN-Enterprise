@@ -19,6 +19,7 @@
   "homepage": "https://github.com/sergiomieic/TDIN-Enterprise#readme",
   "dependencies": {
     "amqplib": "^0.5.1",
+    "express": "^4.15.3",
     "socket.io": "^2.0.1"
   }
 }
