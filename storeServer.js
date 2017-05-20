@@ -3,13 +3,11 @@
 console.log("starting js");
 
 var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var httpStore = require('http').Server(app) /*,
+    httpWarehouse = require('http').Server(app)*/;
 
-/*
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
-}); */
+var io/*Store*/ = require('socket.io')(httpStore);
+
 
 io.on('connection', function (socket) {
 
@@ -39,6 +37,6 @@ io.on('connection', function (socket) {
     });
 });
 
-http.listen(3500, function () {
+httpStore.listen(3500, function () {
     console.log('listening on *:3500');
 });
