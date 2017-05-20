@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Book_Enterprise.Properties
+namespace store.Properties
 {
 
 
