@@ -3,7 +3,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Warehouse2
+namespace Warehouse
 {
     public partial class warehouseGUI : Form
     {

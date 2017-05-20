@@ -1,4 +1,4 @@
-﻿namespace Warehouse2
+﻿namespace Warehouse
 {
     partial class warehouseGUI
     {

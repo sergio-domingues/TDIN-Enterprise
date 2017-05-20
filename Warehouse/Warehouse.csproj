@@ -69,7 +69,7 @@
     <Compile Include="warehouseGUI.Designer.cs">
       <DependentUpon>warehouseGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Warehouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="warehouseGUI.resx">
       <DependentUpon>warehouseGUI.cs</DependentUpon>

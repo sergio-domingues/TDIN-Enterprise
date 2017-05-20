@@ -33,4 +33,8 @@ http.listen(3500, function () {
     console.log('listening on *:3500');
 });
 
+var sendMsg = new function (msg) {
+   // storeSocket.emit(msg);
+}
+
 module.exports = storeSocket;
