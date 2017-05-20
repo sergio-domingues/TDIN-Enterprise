@@ -1,5 +1,4 @@
 ﻿using Common;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Warehouse
 {
-    static class Warehouse
+    static class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -24,8 +23,8 @@ namespace Warehouse
             //todo on handlers add initial get method to retrieve items for the GUIs
 
             WarehouseCommunicationHandler warehouseHandler = new WarehouseCommunicationHandler(warehouseUri);
-         
-            WarehouseGUI warehouseGUI = new WarehouseGUI(warehouseHandler);
+
+            warehouseGUI warehouseGUI = new warehouseGUI(warehouseHandler);
 
             Application.Run(warehouseGUI);
         }

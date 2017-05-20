@@ -1,24 +1,17 @@
 ﻿using Common;
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Warehouse
 {
-    public partial class WarehouseGUI : Form
+    public partial class warehouseGUI : Form
     {
         protected WarehouseCommunicationHandler warehouseHandler;
 
-        public WarehouseGUI(WarehouseCommunicationHandler warehouseHandler)
+        public warehouseGUI(WarehouseCommunicationHandler warehouseHandler)
         {
-            this.warehouseHandler = warehouseHandler;            
+            this.warehouseHandler = warehouseHandler;
             InitializeComponent();
         }
 
