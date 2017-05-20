@@ -3,17 +3,16 @@
 console.log("starting js");
 
 var app = require('express')();
-var httpStore = require('http').Server(app) /*,
-    httpWarehouse = require('http').Server(app)*/;
+var http = require('http').Server(app);
 
-var io/*Store*/ = require('socket.io')(httpStore);
+var io = require('socket.io')(http);
+
+var amqp = require('amqplib/callback_api');
 
 
 io.on('connection', function (socket) {
 
     console.log('a user connected');
-
-    //socket.emit('ack', { hello: 'world' });
 
     socket.on('sell', function (msg) {
         console.log('message received: ', 'sell\n', msg);
@@ -25,11 +24,6 @@ io.on('connection', function (socket) {
         socket.emit("info", { data: "data", more: "data" });
     });
 
-    socket.on('shipping', function (msg) {
-        console.log('message received: ', 'shipping\n', msg);
-        socket.emit("ack", "received ship order");
-    });
-
     /* socket.disconnect() or socket.close() triggers disconnect event */
     socket.on('disconnect', function () {
         console.log("user disconnected");
@@ -37,6 +31,21 @@ io.on('connection', function (socket) {
     });
 });
 
-httpStore.listen(3500, function () {
+http.listen(3500, function () {
     console.log('listening on *:3500');
+});
+
+//rabbitmq
+amqp.connect('amqps://guest:guest@localhost:5672', function (err, conn) {
+    console.log(err);
+    conn.createChannel(function (err, ch) {
+        var q = 'hello';
+        var msg = 'Hello World!';
+
+        ch.assertQueue(q, { durable: false });
+        // Note: on Node 6 Buffer.from(msg) should be used
+        ch.sendToQueue(q, new Buffer(msg));
+        console.log(" [x] Sent %s", msg);
+    });
+    setTimeout(function () { conn.close(); process.exit(0) }, 500);
 });

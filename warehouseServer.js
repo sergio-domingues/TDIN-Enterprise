@@ -6,15 +6,16 @@ console.log("starting js");
 
 var app = require('express')();
 
-var httpWarehouse = require('http').Server(app);
-var io = require('socket.io')(httpWarehouse);
+var httpWarehouse = require('http').Server(app),
+    httpStore = require('http').Server(app);
 
-/*
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
-}); */
+var ioWarehouse = require('socket.io')(httpWarehouse),
+    ioStore = require('socket.io')(httpStore);
 
-io.on('connection', function (socket) {
+var amqp = require('amqplib/callback_api');
+
+
+ioWarehouse.on('connection', function (socket) {
 
     console.log('a user connected');
     //socket.emit('news', { hello: 'world' });
@@ -27,15 +28,30 @@ io.on('connection', function (socket) {
     socket.on('shipping', function (msg) {
         console.log('message received: ', 'shipping\n', msg);
         socket.emit("ack", "received ship order");
+        
+        //todo rabbitMQ
     });
 
     /* socket.disconnect() or socket.close() triggers disconnect event */
     socket.on('disconnect', function () {
         console.log("user disconnected");
-        io.emit('user disconnected');
+        ioWarehouse.emit('user disconnected');
     });
 });
 
 httpWarehouse.listen(4000, function () {
     console.log('listening on *:4000');
+});
+
+
+amqp.connect('amqp://localhost', function (err, conn) {
+    conn.createChannel(function (err, ch) {
+        var q = 'hello';
+
+        ch.assertQueue(q, { durable: false });
+        console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
+        ch.consume(q, function (msg) {
+            console.log(" [x] Received %s", msg.content.toString());
+        }, { noAck: true });
+    });
 });
