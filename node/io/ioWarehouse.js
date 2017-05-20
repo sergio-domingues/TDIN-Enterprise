@@ -4,7 +4,14 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+const mqWarehouse = require('../mq/mqWarehouse');
+
 var warehouseSocket;
+
+http.listen(4000, function () {
+    console.log('listening on *:4000');
+});
+
 
 io.on('connection', function (socket) {
     console.log('a user connected');
@@ -20,7 +27,8 @@ io.on('connection', function (socket) {
         console.log('message received: ', 'shipping\n', msg);
         warehouseSocket.emit("ack", "received ship order");
 
-        //todo rabbitMQ
+        //rabbitmq
+        mqWarehouse.sendMsg(msg);
     });
 
     /* socket.disconnect() or socket.close() triggers disconnect event */
@@ -30,8 +38,10 @@ io.on('connection', function (socket) {
     });
 });
 
-http.listen(4000, function () {
-    console.log('listening on *:4000');
-});
+function sendMsg(msg) {
+    warehouseSocket.emit(msg);
+}
 
-module.exports = warehouseSocket;
+module.exports = {
+    sendMsg,
+};

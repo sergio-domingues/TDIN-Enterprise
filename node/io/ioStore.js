@@ -4,7 +4,13 @@ const express = require('express')();
 var http = require('http').Server(express);
 var io = require('socket.io')(http);
 
+var mqStore = require('../mq/mqStore');
+
 var storeSocket;
+
+http.listen(3500, function () {
+    console.log('listening on *:3500');
+});
 
 io.on('connection', function (socket) {
 
@@ -20,6 +26,8 @@ io.on('connection', function (socket) {
     storeSocket.on('order', function (msg) {
         console.log('message received: ', 'order\n', msg);
         storeSocket.emit("info", { data: "data", more: "data" });
+
+        mqStore.sendMsg(msg);
     });
 
     /* socket.disconnect() or socket.close() triggers disconnect event */
@@ -29,12 +37,10 @@ io.on('connection', function (socket) {
     });
 });
 
-http.listen(3500, function () {
-    console.log('listening on *:3500');
-});
-
-var sendMsg = new function (msg) {
-   // storeSocket.emit(msg);
+function sendMsg (msg) {
+   storeSocket.emit(msg);
 }
 
-module.exports = storeSocket;
+module.exports = {
+    sendMsg,
+};
