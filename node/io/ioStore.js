@@ -24,6 +24,15 @@ io.on('connection', function (socket) {
         //db
     });
 
+    storeSocket.on('getOrders', function (msg) {
+        console.log('message received: ', 'getOrders\n', msg);
+
+        //TODO
+        //getOrderslist from database
+
+        storeSocket.emit("orderList", "");
+    });
+
     storeSocket.on('order', function (msg) {
         console.log('message received: ', 'order\n', msg);
 

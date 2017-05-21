@@ -1,6 +1,7 @@
 ﻿using Common;
-
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,20 +17,18 @@ namespace Store
     {
         protected StoreCommunicationHandler commHandler;
 
+        public ArrayList acceptOrdersList { get; set; }
+
         public StoreGUI(StoreCommunicationHandler handler)
         {
-            commHandler = handler;            
+            commHandler = handler;
+            commHandler.gui = this;        
             InitializeComponent();
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        private void StoreGUI_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            commHandler.sendMsg("getOrders", "");
         }
 
         private void sellButton_Click(object sender, EventArgs e)
@@ -66,9 +65,67 @@ namespace Store
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
-            //TODO 
+            // TODO
+            //update stock
+            //update order
+            //send email
+
+            ListViewItem order;
+
+            try
+            {
+                order = ordersListView.SelectedItems[0];
+            }
+            catch (Exception exception)
+            {
+                return;
+            }
+
+            ordersListView.BeginInvoke((Action)(() =>
+            {
+                ordersListView.SelectedItems[0].Remove();
+            }));
         }
 
-        
+        public void initialOrdersView(string data)
+        {
+            //to test
+            data = @"[{ bookTitle : 'bookTitle', " +
+                "clientName : 'clientName', " +
+                "quantity : 15, " +
+                "address : 'address', " +
+                "emailAddress : 'emailAddress', " +
+                "id : 'id'," +
+                "status : 'status'}]";
+
+            acceptOrdersList = new ArrayList(JsonConvert.DeserializeObject<List<Order>>(data));
+
+            ordersListView.BeginInvoke((Action)(() =>
+            {
+                foreach (Order order in acceptOrdersList)
+                {
+                    ListViewItem lvItem = new ListViewItem(order.bookTitle);
+                    lvItem.SubItems.Add(order.quantity.ToString());
+                    lvItem.SubItems.Add(order.id.ToString());
+
+                    ordersListView.Items.Add(lvItem);
+                }
+            }));
+        }
+
+        public void addOrderView(string data)
+        {
+            //todo use data param
+
+            ordersListView.BeginInvoke((Action)(() =>
+            {
+                ListViewItem lvItem = new ListViewItem("bookTitle");
+                lvItem.SubItems.Add(13.ToString());
+                lvItem.SubItems.Add("id2");
+
+                ordersListView.Items.Add(lvItem);
+            }));
+        }
+
     }
 }

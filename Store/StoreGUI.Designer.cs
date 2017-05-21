@@ -35,6 +35,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.acceptButton = new System.Windows.Forms.Button();
+            this.BookTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // sellButton
@@ -58,7 +61,13 @@
             // 
             // ordersListView
             // 
+            this.ordersListView.FullRowSelect = true;
+            this.ordersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.BookTitle,
+            this.Quantity,
+            this.id});
             this.ordersListView.Location = new System.Drawing.Point(236, 39);
+            this.ordersListView.MultiSelect = false;
             this.ordersListView.Name = "ordersListView";
             this.ordersListView.Size = new System.Drawing.Size(141, 160);
             this.ordersListView.TabIndex = 10;
@@ -103,6 +112,20 @@
             this.acceptButton.UseVisualStyleBackColor = true;
             this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
             // 
+            // BookTitle
+            // 
+            this.BookTitle.Text = "BookTitle";
+            // 
+            // Quantity
+            // 
+            this.Quantity.Text = "Quantity";
+            this.Quantity.Width = 51;
+            // 
+            // id
+            // 
+            this.id.Text = "id";
+            this.id.Width = 100;
+            // 
             // StoreGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,6 +140,7 @@
             this.Controls.Add(this.sellButton);
             this.Name = "StoreGUI";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.StoreGUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,6 +155,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button acceptButton;
+        private System.Windows.Forms.ColumnHeader BookTitle;
+        private System.Windows.Forms.ColumnHeader Quantity;
+        private System.Windows.Forms.ColumnHeader id;
     }
 }
 

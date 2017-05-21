@@ -32,11 +32,18 @@ namespace Store
                 // ManualResetEvent.Set();
             });
 
+            socket.On("orderList", (data) =>
+            {
+                Console.WriteLine(data);
+                gui.initialOrdersView((string)data);
+            });
+
             socket.On("acceptOrder", (data) =>
             {
                 Console.WriteLine(">>>>>>>>accept order>>>> ", data);
 
-                //todo change gui
+                //todo
+                gui.addOrderView((string) data);
 
             });
 
