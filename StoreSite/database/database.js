@@ -71,6 +71,17 @@ function decreaseStock(title, num, next){
 	})
 }
 
+function IncreaseStock(title, num, next){
+	getBookStock(title, function(stock){
+		var stock =  stock + num;
+		db.run("UPDATE Book SET Stock = " + stock + " WHERE Title = " + "\x27" + title + "\x27");
+
+		if(typeof next === 'function'){
+			next();
+		}
+	})
+}
+
 function getOrderInfo(orderId, next){
 	if(typeof next === 'function'){
 		console.log(orderId);
@@ -78,6 +89,14 @@ function getOrderInfo(orderId, next){
 			console.log(rows);
 			next(rows);
 		});
+	}
+}
+
+function UptadeOrderState(orderId, state, next){
+	if(typeof next === 'function'){
+		db.run("UPDATE Orders SET State = " + state + "WHERE OrderId = " + "\x27" + orderId + "\x27", function(err, rows){
+			next();
+		})
 	}
 }
 
