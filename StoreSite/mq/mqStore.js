@@ -3,6 +3,8 @@
 var amqp = require('amqplib/callback_api');
 
 var guiSocket = require('../io/ioStore');
+var db = require('../database/database.js');
+var utils = require('../public/js/utils.js');
 
 var q, r;
 var channel;
@@ -39,7 +41,13 @@ function receiveMsgs() {
     channel.consume(q, function (msg) {
         console.log(" [x] Received %s", msg.content.toString());
         
-        guiSocket.sendMsg("acceptOrder", msg.content.toString());
+        
+        var obj = JSON.parse(msg.content.toString());
+        console.log("CARALHO " + obj.id);
+        db.uptadeOrderState(obj.id, "The dispatch of your order should occur at " + utils.get2daysDate() , function(){
+            guiSocket.sendMsg("acceptOrder", msg.content.toString());
+        });
+        
 
     }, { noAck: true });
 

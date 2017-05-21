@@ -92,13 +92,22 @@ function getOrderInfo(orderId, next){
 	}
 }
 
-function UptadeOrderState(orderId, state, next){
+function uptadeOrderState(orderId, state, next){
 	if(typeof next === 'function'){
-		db.run("UPDATE Orders SET State = " + state + "WHERE OrderId = " + "\x27" + orderId + "\x27", function(err, rows){
+		db.run("UPDATE Orders SET State = " + "\x27" +  state +  "\x27" + " WHERE OrderId = " + "\x27" + orderId + "\x27", function(err, rows){
+			console.log("UPDATE Orders SET State = " + state + " WHERE OrderId = " + "\x27" + orderId + "\x27");
 			next();
 		})
 	}
 }
 
+function getPendingOrders(state, next){
+	if(typeof next === 'function'){
+		db.all("SELECT * from Orders where State = " + "\x27" + state + "\x27", function(err, rows){
+			next(rows);
+		});
+	}
+}
 
-module.exports = {getAllBooksInfo, getBookPrice, getBookStock, createNewSell, createNewOrder, decreaseStock, getOrderInfo};
+
+module.exports = {getAllBooksInfo, getBookPrice, getBookStock, createNewSell, createNewOrder, decreaseStock, getOrderInfo, getPendingOrders, uptadeOrderState};
