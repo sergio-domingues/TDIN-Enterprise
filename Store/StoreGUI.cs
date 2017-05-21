@@ -1,6 +1,8 @@
 ﻿using Common;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +17,12 @@ namespace Store
     public partial class StoreGUI : Form
     {
         protected StoreCommunicationHandler commHandler;
+        private ArrayList booksList { get; set; }
 
         public StoreGUI(StoreCommunicationHandler handler)
         {
-            commHandler = handler;            
+            commHandler = handler;
+            commHandler.gui = this;
             InitializeComponent();
         }
 
@@ -67,6 +71,25 @@ namespace Store
         private void acceptButton_Click(object sender, EventArgs e)
         {
             //TODO 
+        }
+
+        public void showInitialBooks(JObject books)
+        {
+            var booksArray = (JArray) books["data"];
+
+            booksList = new ArrayList(JsonConvert.DeserializeObject<List<Book>>(booksArray.ToString()));
+
+            ordersListView.BeginInvoke((Action)(() =>
+            {
+                foreach (Book book in booksList)
+                {
+                    ListViewItem lvItem = new ListViewItem(book.Title);
+                    lvItem.SubItems.Add(book.Stock.ToString());
+                    lvItem.SubItems.Add(book.Price.ToString());
+
+                    listView1.Items.Add(lvItem);
+                }
+            }));
         }
 
         

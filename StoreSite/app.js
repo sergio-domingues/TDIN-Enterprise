@@ -11,6 +11,7 @@ var search = require('./routes/search');
 
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var db = require('./database/database.js');
 
 var app = express();
 
@@ -60,6 +61,10 @@ app.get('/', function (req, res) {
 io.on('connection', function (socket) {
 
     console.log('a user connected');
+
+    db.getAllBooksInfo(function(rows){
+      socket.emit("booksList", {data: rows});
+    });
 
     //socket.emit('ack', { hello: 'world' });
 

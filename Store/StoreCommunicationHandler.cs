@@ -1,4 +1,6 @@
 ﻿using Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +42,11 @@ namespace Store
 
             });
 
+            socket.On("booksList", ( data) =>
+            {
+                Console.WriteLine(data);
+                gui.showInitialBooks((JObject) data);
+            });
         }
     }
 }

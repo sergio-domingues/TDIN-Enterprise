@@ -12,7 +12,6 @@ function getAllBooksInfo(next){
 				next(rows);
 			}
 		});
-
 	});
 }
 
