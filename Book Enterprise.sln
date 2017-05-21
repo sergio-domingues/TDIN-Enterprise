@@ -5,30 +5,30 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{F0AA7452-6A71-40E2-B166-5631C26FF16A}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "node", "node\", "{30653465-33D1-4EA2-823F-59F84A05D9AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse", "Warehouse\Warehouse.csproj", "{8E6CD536-C3D3-4C7A-8EC6-1D524E8D259E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store\Store.csproj", "{C056B9A7-3413-4BDA-BB88-F1DF23F98BD8}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "StoreSite", "StoreSite\", "{6114487B-1269-4B10-BCDA-21CC25D7CD5D}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_3184"
-		Debug.AspNetCompiler.PhysicalPath = "node\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3184\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_26819"
+		Debug.AspNetCompiler.PhysicalPath = "StoreSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_26819\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_3184"
-		Release.AspNetCompiler.PhysicalPath = "node\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3184\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_26819"
+		Release.AspNetCompiler.PhysicalPath = "StoreSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_26819\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "3184"
-		SlnRelativePath = "node\"
+		VWDPort = "26819"
+		SlnRelativePath = "StoreSite\"
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse", "Warehouse\Warehouse.csproj", "{8E6CD536-C3D3-4C7A-8EC6-1D524E8D259E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store\Store.csproj", "{C056B9A7-3413-4BDA-BB88-F1DF23F98BD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,9 +42,6 @@ Global
 		{F0AA7452-6A71-40E2-B166-5631C26FF16A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0AA7452-6A71-40E2-B166-5631C26FF16A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F0AA7452-6A71-40E2-B166-5631C26FF16A}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{30653465-33D1-4EA2-823F-59F84A05D9AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30653465-33D1-4EA2-823F-59F84A05D9AC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{30653465-33D1-4EA2-823F-59F84A05D9AC}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{8E6CD536-C3D3-4C7A-8EC6-1D524E8D259E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E6CD536-C3D3-4C7A-8EC6-1D524E8D259E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E6CD536-C3D3-4C7A-8EC6-1D524E8D259E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +50,10 @@ Global
 		{C056B9A7-3413-4BDA-BB88-F1DF23F98BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C056B9A7-3413-4BDA-BB88-F1DF23F98BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C056B9A7-3413-4BDA-BB88-F1DF23F98BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6114487B-1269-4B10-BCDA-21CC25D7CD5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6114487B-1269-4B10-BCDA-21CC25D7CD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6114487B-1269-4B10-BCDA-21CC25D7CD5D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{6114487B-1269-4B10-BCDA-21CC25D7CD5D}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
