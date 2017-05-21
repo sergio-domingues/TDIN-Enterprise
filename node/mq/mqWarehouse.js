@@ -41,7 +41,7 @@ function receiveMsgs() {
        // console.log('check 1 >>>>>>>>>>>>>>', guiSocket.connected);
         //setTimeout(2000);
 
-        guiSocket.sendMsg("order", msg);
+        guiSocket.sendMsg("order", JSON.stringify(msg));
 
     }, { noAck: true });
 
