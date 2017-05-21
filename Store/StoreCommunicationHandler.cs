@@ -18,6 +18,12 @@ namespace Store
 
         override public void receiveMsg()
         {
+            if(socket == null)
+            {
+                Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>NULLLLLL");
+            }
+
+
             socket.On("info", (data) =>
             {
                 Console.WriteLine(data);
@@ -25,6 +31,15 @@ namespace Store
                 // events.Enqueue(data);
                 // ManualResetEvent.Set();
             });
+
+            socket.On("acceptOrder", (data) =>
+            {
+                Console.WriteLine(">>>>>>>>accept order>>>> ", data);
+
+                //todo change gui
+
+            });
+
         }
     }
 }

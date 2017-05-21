@@ -2,7 +2,7 @@
 
 var amqp = require('amqplib/callback_api');
 
-//require socket to sendmsg
+var guiSocket = require('../io/ioStore');
 
 var q, r;
 var channel;
@@ -20,7 +20,7 @@ amqp.connect('amqp://localhost', function (err, conn) {
         receiveMsgs();
 
         //produce to warehouse  
-        sendMsg(msg);
+       //sendMsg(msg);
     });
 
     //extract to method
@@ -38,6 +38,9 @@ function receiveMsgs() {
     console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
     channel.consume(q, function (msg) {
         console.log(" [x] Received %s", msg.content.toString());
+        
+        guiSocket.sendMsg("acceptOrder", msg);
+
     }, { noAck: true });
 
     //send to socket or call function

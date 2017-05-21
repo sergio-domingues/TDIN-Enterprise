@@ -4,7 +4,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-const mqWarehouse = require('../mq/mqWarehouse');
+var mqWarehouse = require('../mq/mqWarehouse');
 
 var warehouseSocket;
 
@@ -20,12 +20,12 @@ io.on('connection', function (socket) {
 
     warehouseSocket.on('order', function (msg) {
         console.log('message received: ', 'order\n', msg);
-        warehouseSocket.emit("info", { data: "data", more: "data" });
+        warehouseSocket.emit("info", msg);
     });
 
     warehouseSocket.on('shipping', function (msg) {
         console.log('message received: ', 'shipping\n', msg);
-        warehouseSocket.emit("ack", "received ship order");
+        //warehouseSocket.emit("ack", "received ship order");
 
         //rabbitmq
         mqWarehouse.sendMsg(msg);
@@ -39,8 +39,7 @@ io.on('connection', function (socket) {
 
         warehouseSocket.emit("orderList", "");
     });
-
-
+    
     /* socket.disconnect() or socket.close() triggers disconnect event */
     warehouseSocket.on('disconnect', function () {
         console.log("user disconnected");
@@ -48,10 +47,12 @@ io.on('connection', function (socket) {
     });
 });
 
-function sendMsg(msg) {
-    warehouseSocket.emit(msg);
+function sendMsg(msg, data) {
+    console.log('check 1 >>>>>>>>>>>>>>', warehouseSocket.connected);
+    warehouseSocket.emit(msg, data);
+    warehouseSocket.on('messageSuccess', function (data) {
+        console.log(">>>>>>>>>>>>>>>successs");
+    });
 }
 
-module.exports = {
-    sendMsg,
-};
+module.exports.sendMsg = sendMsg;

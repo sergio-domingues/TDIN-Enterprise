@@ -81,7 +81,22 @@ namespace Warehouse
                     ordersListView.Items.Add(lvItem);
                 }
             }));
-        }       
+        }
+        
+        public void addOrderView(string data)
+        {
+            //todo use data param
+            
+            ordersListView.BeginInvoke((Action)(() =>
+            {
+                ListViewItem lvItem = new ListViewItem("cliente");
+                lvItem.SubItems.Add("bookTitle");
+                lvItem.SubItems.Add(13.ToString());
+                lvItem.SubItems.Add("status");
+                lvItem.SubItems.Add("id2");
 
+                ordersListView.Items.Add(lvItem);
+            }));
+        }            
     }
 }

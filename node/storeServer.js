@@ -8,14 +8,6 @@ var app = require('express')();
 
 var ioStore = require('./io/ioStore');
 
+//setTimeout(function () {} , 1000 );
+
 var mqStore = require('./mq/mqStore');
-
-
-//TODO init method that inits IO and MQ
-
-
-
-var createChannel = new function (conn) {
-
-    
-}

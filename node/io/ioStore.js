@@ -20,15 +20,18 @@ io.on('connection', function (socket) {
 
     storeSocket.on('sell', function (msg) {
         console.log('message received: ', 'sell\n', msg);
-        storeSocket.emit("info", { data: "data", more: "data" });
+        //storeSocket.emit("info", { data: "data", more: "data" });
+        //db
     });
 
     storeSocket.on('order', function (msg) {
         console.log('message received: ', 'order\n', msg);
-        storeSocket.emit("info", { data: "data", more: "data" });
+
+        //storeSocket.emit("order", { data: "data", more: "data" });
 
         mqStore.sendMsg(msg);
     });
+    
 
     /* socket.disconnect() or socket.close() triggers disconnect event */
     storeSocket.on('disconnect', function () {
@@ -37,10 +40,14 @@ io.on('connection', function (socket) {
     });
 });
 
-function sendMsg (msg) {
-   storeSocket.emit(msg);
+function sendMsg(msg, data) {
+    console.log('check 1 >>>>>>>>>>>>>>', storeSocket.connected);
+
+   storeSocket.emit(msg, data);
+
+   storeSocket.on('messageSuccess', function (data) {
+       console.log(">>>>>>>>>>>>>>>successs");
+   });
 }
 
-module.exports = {
-    sendMsg,
-};
+module.exports.sendMsg = sendMsg;

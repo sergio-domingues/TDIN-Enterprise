@@ -58,7 +58,7 @@ namespace Store
                 quantity = 5,
                 address = "address",
                 emailAddress = "emailaddress",
-                id = Guid.NewGuid()
+                id = Guid.NewGuid().ToString()
             };
 
             commHandler.sendMsg("order", msg.getJSON());

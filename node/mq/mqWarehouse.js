@@ -2,6 +2,8 @@
 
 var amqp = require('amqplib/callback_api');
 
+var guiSocket = require('../io/ioWarehouse');
+
 var q, r;
 var channel;
 
@@ -11,28 +13,40 @@ amqp.connect('amqp://localhost', function (err, conn) {
         channel = ch;
 
         //consumer
-        q = 'hello';
-
-        ch.assertQueue(q, { durable: false });
-        console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
-        ch.consume(q, function (msg) {
-            console.log(" [x] Received %s", msg.content.toString());
-        }, { noAck: true });
-
-        //producer
-        r = 'teste';
+        q = 'teste', r = 'hello';
         var msg = 'Hello World!';
 
-        ch.assertQueue(r, { durable: false });
-        ch.sendToQueue(r, new Buffer(msg));
-        console.log(" [x] Sent %s", msg);
+        //consume from store
+        receiveMsgs();
+
+        //produce to store  
+        //sendMsg(msg);
     });
 
 });
 
 function sendMsg(msg) {
-    channel.sendToQueue(r, new Buffer(msg));
+    channel.assertQueue(q, { durable: false });
+    channel.sendToQueue(  q  , new Buffer(msg));
+    console.log(" [x] Sent %s", msg);
 }
+
+function receiveMsgs() {
+    channel.assertQueue(r, { durable: false });
+    console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", r);
+    channel.consume(r, function (msg) {
+        console.log(" [x] Received %s", msg.content.toString());
+
+        //send info to GUI to handle
+       // console.log('check 1 >>>>>>>>>>>>>>', guiSocket.connected);
+        //setTimeout(2000);
+
+        guiSocket.sendMsg("order", msg);
+
+    }, { noAck: true });
+
+}
+
 
 module.exports = {
     sendMsg,
