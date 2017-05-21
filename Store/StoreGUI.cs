@@ -1,4 +1,5 @@
 ﻿using Common;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -16,13 +17,14 @@ namespace Store
     public partial class StoreGUI : Form
     {
         protected StoreCommunicationHandler commHandler;
+        private ArrayList booksList { get; set; }
 
         public ArrayList acceptOrdersList { get; set; }
 
         public StoreGUI(StoreCommunicationHandler handler)
         {
             commHandler = handler;
-            commHandler.gui = this;        
+            commHandler.gui = this;
             InitializeComponent();
         }
 
@@ -87,6 +89,26 @@ namespace Store
             }));
         }
 
+        public void showInitialBooks(JObject books)
+        {
+            var booksArray = (JArray) books["data"];
+
+            booksList = new ArrayList(JsonConvert.DeserializeObject<List<Book>>(booksArray.ToString()));
+
+            ordersListView.BeginInvoke((Action)(() =>
+            {
+                foreach (Book book in booksList)
+                {
+                    ListViewItem lvItem = new ListViewItem(book.Title);
+                    lvItem.SubItems.Add(book.Stock.ToString());
+                    lvItem.SubItems.Add(book.Price.ToString());
+
+                    listView1.Items.Add(lvItem);
+                }
+            }));
+        }
+
+        
         public void initialOrdersView(string data)
         {
             //to test
