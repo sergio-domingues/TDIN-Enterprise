@@ -39,7 +39,7 @@ function receiveMsgs() {
     channel.consume(q, function (msg) {
         console.log(" [x] Received %s", msg.content.toString());
         
-        guiSocket.sendMsg("acceptOrder", JSON.stringify(msg));
+        guiSocket.sendMsg("acceptOrder", msg.content.toString());
 
     }, { noAck: true });
 

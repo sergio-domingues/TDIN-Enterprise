@@ -36,12 +36,8 @@ function receiveMsgs() {
     console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", r);
     channel.consume(r, function (msg) {
         console.log(" [x] Received %s", msg.content.toString());
-
-        //send info to GUI to handle
-       // console.log('check 1 >>>>>>>>>>>>>>', guiSocket.connected);
-        //setTimeout(2000);
-
-        guiSocket.sendMsg("order", JSON.stringify(msg));
+        
+        guiSocket.sendMsg("order", msg.content.toString());
 
     }, { noAck: true });
 

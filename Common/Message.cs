@@ -47,15 +47,16 @@ namespace Common
     [Serializable]
     public class OrderMessage : Message
     {
-        public string address, emailAddress, id;
+        public string address, emailAddress, id, status;
 
         public OrderMessage() : base() { }
 
-        public OrderMessage(string bookTitle, string clientName, int quantity, string address, string emailAddress, string id) : base(bookTitle, clientName, quantity)
+        public OrderMessage(string bookTitle, string clientName, int quantity, string address, string emailAddress, string id, string status) : base(bookTitle, clientName, quantity)
         {
             this.address = address;
             this.emailAddress = emailAddress;
             this.id = id;
+            this.status = status;
         }
 
         override public string getJSON()
@@ -70,7 +71,7 @@ namespace Common
     [Serializable]
     public class ShipOrderMessage
     {
-        public string id;
+        public string clientName, id;
         public int qtd;
 
         public ShipOrderMessage() { }

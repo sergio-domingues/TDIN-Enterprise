@@ -32,11 +32,10 @@ namespace Warehouse
             {
                 return;
             }
-
-            //Console.WriteLine("order:  ", order);
-                     
+                                 
             ShipOrderMessage msg = new ShipOrderMessage()
             {
+                clientName = order.SubItems[0].Text,
                 id = order.SubItems[4].Text,
                 qtd = int.Parse(order.SubItems[2].Text)
             };
@@ -57,7 +56,8 @@ namespace Warehouse
 
         public void initialOrdersView(string data)
         {
-            //to test
+                        
+            //to test -- comment when data received from db
             data = @"[{ bookTitle : 'bookTitle', " +
                 "clientName : 'clientName', " +
                 "quantity : 15, " +
@@ -85,15 +85,17 @@ namespace Warehouse
         
         public void addOrderView(string data)
         {
-            //todo use data param
+            Console.WriteLine(">>>>>>>>", data);
+
+            Order order = JsonConvert.DeserializeObject<Order>(data);
             
             ordersListView.BeginInvoke((Action)(() =>
             {
-                ListViewItem lvItem = new ListViewItem("cliente");
-                lvItem.SubItems.Add("bookTitle");
-                lvItem.SubItems.Add(13.ToString());
-                lvItem.SubItems.Add("status");
-                lvItem.SubItems.Add("id2");
+                ListViewItem lvItem = new ListViewItem(order.clientName);
+                lvItem.SubItems.Add(order.bookTitle);
+                lvItem.SubItems.Add(order.quantity.ToString());
+                lvItem.SubItems.Add(order.status);
+                lvItem.SubItems.Add(order.id);
 
                 ordersListView.Items.Add(lvItem);
             }));

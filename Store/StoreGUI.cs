@@ -35,14 +35,26 @@ namespace Store
 
         private void sellButton_Click(object sender, EventArgs e)
         {
-            //TODO get item clicked
+            ListViewItem book;
+
+            try
+            {
+                book = listView1.SelectedItems[0];
+            }
+            catch (Exception exception)
+            {
+                return;
+            }
+
 
             SellMessage msg = new SellMessage()
             {
-                bookTitle = "titulo",
-                clientName = "nome",
-                quantity = 5,
-                totalPrice = 15
+                bookTitle = book.SubItems[0].Text,
+                clientName = "TODO NOME DA TEXTBOX",
+                //todo ir buscar quantidade
+                quantity = 10,
+                /* TODO usar qtd para calcular totalprice */
+                totalPrice = 10 * int.Parse(book.SubItems[2].Text)
             };
 
             commHandler.sendMsg("sell", msg.getJSON());
@@ -50,16 +62,27 @@ namespace Store
 
         private void orderButton_Click(object sender, EventArgs e)
         {
-            //TODO get item clicked
+            ListViewItem book;
+
+            try
+            {
+                book = listView1.SelectedItems[0];
+            }
+            catch (Exception exception)
+            {
+                return;
+            }
 
             OrderMessage msg = new OrderMessage()
             {
-                bookTitle = "titulo",
-                clientName = "nome",
-                quantity = 5,
-                address = "address",
-                emailAddress = "emailaddress",
-                id = Guid.NewGuid().ToString()
+                bookTitle = book.SubItems[0].Text,
+                clientName = "TODO NOME DA TEXTBOX",
+                //todo ir buscar quantidade
+                quantity = 10,             
+                address = "TODO",
+                emailAddress = "TODO",
+                id = Guid.NewGuid().ToString(),
+                status = "waiting expedition"
             };
 
             commHandler.sendMsg("order", msg.getJSON());
@@ -111,7 +134,7 @@ namespace Store
         
         public void initialOrdersView(string data)
         {
-            //to test
+            //to test  COMMENT AFTER DB DATA
             data = @"[{ bookTitle : 'bookTitle', " +
                 "clientName : 'clientName', " +
                 "quantity : 15, " +
@@ -137,13 +160,16 @@ namespace Store
 
         public void addOrderView(string data)
         {
-            //todo use data param
+            Console.WriteLine(">>>>>>>>", data);
+
+            JObject shipOrder = JObject.Parse(data);
+
 
             ordersListView.BeginInvoke((Action)(() =>
             {
-                ListViewItem lvItem = new ListViewItem("bookTitle");
-                lvItem.SubItems.Add(13.ToString());
-                lvItem.SubItems.Add("id2");
+                ListViewItem lvItem = new ListViewItem(shipOrder["clientName"].ToString());
+                lvItem.SubItems.Add(shipOrder["qtd"].ToString());
+                lvItem.SubItems.Add(shipOrder["id"].ToString());
 
                 ordersListView.Items.Add(lvItem);
             }));
