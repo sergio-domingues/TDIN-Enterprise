@@ -47,12 +47,11 @@ namespace Common
     [Serializable]
     public class OrderMessage : Message
     {
-        public string address, emailAddress;
-        public Guid id;
+        public string address, emailAddress, id;
 
         public OrderMessage() : base() { }
 
-        public OrderMessage(string bookTitle, string clientName, int quantity, string address, string emailAddress, Guid id) : base(bookTitle, clientName, quantity)
+        public OrderMessage(string bookTitle, string clientName, int quantity, string address, string emailAddress, string id) : base(bookTitle, clientName, quantity)
         {
             this.address = address;
             this.emailAddress = emailAddress;
@@ -71,7 +70,7 @@ namespace Common
     [Serializable]
     public class ShipOrderMessage
     {
-        public Guid id;
+        public string id;
         public int qtd;
 
         public ShipOrderMessage() { }

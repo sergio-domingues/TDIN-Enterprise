@@ -1,5 +1,6 @@
 ﻿using Quobject.SocketIoClientDotNet.Client;
 using System;
+using System.Windows.Forms;
 
 namespace Common
 {
@@ -45,43 +46,6 @@ namespace Common
         }
 
         abstract public void receiveMsg();
-    }
-
-    public class StoreCommunicationHandler : CommunicationHandler
-    {
-        public StoreCommunicationHandler(Uri uri) : base(uri)
-        {
-            receiveMsg();
-        }
-
-        override public void receiveMsg()
-        {
-            socket.On("info", (data) =>
-            {
-                Console.WriteLine(data);
-                //socket.Emit("response", "received");
-                // events.Enqueue(data);
-                // ManualResetEvent.Set();
-            });
-        }
-    }
-
-    public class WarehouseCommunicationHandler : CommunicationHandler
-    {        
-        public WarehouseCommunicationHandler(Uri uri) : base(uri)
-        {
-            receiveMsg();
-        }
-
-        override public void receiveMsg()
-        {
-            socket.On("ack", (data) =>
-            {
-                Console.WriteLine(data);
-                //socket.Emit("response", "received");
-                // events.Enqueue(data);
-                // ManualResetEvent.Set();
-            });
-        }       
-    }
+    } 
+    
 }

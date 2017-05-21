@@ -31,6 +31,16 @@ io.on('connection', function (socket) {
         mqWarehouse.sendMsg(msg);
     });
 
+    warehouseSocket.on('getOrders', function (msg) {
+        console.log('message received: ', 'getOrders\n', msg);
+
+        //TODO
+        //getOrderslist from database
+
+        warehouseSocket.emit("orderList", "");
+    });
+
+
     /* socket.disconnect() or socket.close() triggers disconnect event */
     warehouseSocket.on('disconnect', function () {
         console.log("user disconnected");

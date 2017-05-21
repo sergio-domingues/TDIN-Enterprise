@@ -2,6 +2,8 @@
 
 var amqp = require('amqplib/callback_api');
 
+//require socket to sendmsg
+
 var q, r;
 var channel;
 
@@ -37,6 +39,8 @@ function receiveMsgs() {
     channel.consume(q, function (msg) {
         console.log(" [x] Received %s", msg.content.toString());
     }, { noAck: true });
+
+    //send to socket or call function
 }
 
 module.exports = {
