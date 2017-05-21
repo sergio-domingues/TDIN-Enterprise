@@ -47,5 +47,20 @@ function getDate() {
 
 }
 
+function get2daysDate(){
+    var date = new Date();
 
-module.exports = {sendEmail, getDate};
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day  = date.getDate()+2;
+    day = (day < 10 ? "0" : "") + day;
+
+
+    return day + "/" + month + "/" + year;
+}
+
+
+module.exports = {sendEmail, getDate, get2daysDate};
