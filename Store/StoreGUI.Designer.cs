@@ -30,14 +30,17 @@
         {
             this.sellButton = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Stock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ordersListView = new System.Windows.Forms.ListView();
+            this.BookTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.orderButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.acceptButton = new System.Windows.Forms.Button();
-            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Stock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // sellButton
@@ -64,14 +67,46 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            // 
+            // Stock
+            // 
+            this.Stock.Text = "Stock";
+            // 
+            // Price
+            // 
+            this.Price.Text = "Price";
+            // 
             // ordersListView
             // 
-            this.ordersListView.Location = new System.Drawing.Point(584, 39);
+            this.ordersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.BookTitle,
+            this.Quantity,
+            this.id});
+            this.ordersListView.FullRowSelect = true;
+            this.ordersListView.Location = new System.Drawing.Point(586, 39);
+            this.ordersListView.MultiSelect = false;
             this.ordersListView.Name = "ordersListView";
             this.ordersListView.Size = new System.Drawing.Size(141, 160);
             this.ordersListView.TabIndex = 10;
             this.ordersListView.UseCompatibleStateImageBehavior = false;
             this.ordersListView.View = System.Windows.Forms.View.Details;
+            // 
+            // BookTitle
+            // 
+            this.BookTitle.Text = "BookTitle";
+            // 
+            // Quantity
+            // 
+            this.Quantity.Text = "Quantity";
+            this.Quantity.Width = 51;
+            // 
+            // id
+            // 
+            this.id.Text = "id";
+            this.id.Width = 100;
             // 
             // orderButton
             // 
@@ -110,32 +145,6 @@
             this.acceptButton.Text = "Accept Order";
             this.acceptButton.UseVisualStyleBackColor = true;
             this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
-            // 
-            // Title
-            // 
-            this.Title.Text = "Title";
-            // 
-            // Stock
-            // 
-            this.Stock.Text = "Stock";
-            // 
-            // Price
-            // 
-            this.Price.Text = "Price";
-            // 
-            // BookTitle
-            // 
-            this.BookTitle.Text = "BookTitle";
-            // 
-            // Quantity
-            // 
-            this.Quantity.Text = "Quantity";
-            this.Quantity.Width = 51;
-            // 
-            // id
-            // 
-            this.id.Text = "id";
-            this.id.Width = 100;
             // 
             // StoreGUI
             // 
