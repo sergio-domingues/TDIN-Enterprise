@@ -41,13 +41,9 @@ io.on('connection', function (socket) {
 });
 
 function sendMsg(msg, data) {
-    //console.log('check 1 >>>>>>>>>>>>>>', storeSocket.connected);
+   console.log('check 1 >>>>>>>>>>>>>>');
 
    io.emit(msg, data);
-
-   /* storeSocket.on('messageSuccess', function (data) {
-       console.log(">>>>>>>>>>>>>>>successs");
-   }); */
 }
 
 module.exports.sendMsg = sendMsg;

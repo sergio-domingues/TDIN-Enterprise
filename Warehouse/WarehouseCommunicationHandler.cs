@@ -36,7 +36,7 @@ namespace Warehouse
             
             socket.On("order", (data) =>
             {
-                Console.WriteLine(data);
+                Console.WriteLine(">>>>>>>>CHANGING GUI: " , data);
                 gui.addOrderView((string)data);
             });
 

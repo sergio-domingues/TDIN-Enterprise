@@ -48,13 +48,9 @@ io.on('connection', function (socket) {
 });
 
 function sendMsg(msg, data) {
-    //console.log('check 1 >>>>>>>>>>>>>>', warehouseSocket.connected);
+    console.log('check 1 >>>>>>>>>>');
 
     io.emit(msg, data);
-
-    /*warehouseSocket.on('messageSuccess', function (data) {
-        console.log(">>>>>>>>>>>>>>>successs");
-    });*/
 }
 
 module.exports.sendMsg = sendMsg;

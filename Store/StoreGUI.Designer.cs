@@ -30,7 +30,7 @@
         {
             this.sellButton = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.ordersListView = new System.Windows.Forms.ListView();
             this.orderButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,14 +56,14 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // listView2
+            // ordersListView
             // 
-            this.listView2.Location = new System.Drawing.Point(236, 39);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(141, 160);
-            this.listView2.TabIndex = 10;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
+            this.ordersListView.Location = new System.Drawing.Point(236, 39);
+            this.ordersListView.Name = "ordersListView";
+            this.ordersListView.Size = new System.Drawing.Size(141, 160);
+            this.ordersListView.TabIndex = 10;
+            this.ordersListView.UseCompatibleStateImageBehavior = false;
+            this.ordersListView.View = System.Windows.Forms.View.Details;
             // 
             // orderButton
             // 
@@ -103,7 +103,7 @@
             this.acceptButton.UseVisualStyleBackColor = true;
             this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
             // 
-            // Form1
+            // StoreGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -112,10 +112,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.orderButton);
-            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.ordersListView);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.sellButton);
-            this.Name = "Form1";
+            this.Name = "StoreGUI";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -126,7 +126,7 @@
 
         private System.Windows.Forms.Button sellButton;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView ordersListView;
         private System.Windows.Forms.Button orderButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
