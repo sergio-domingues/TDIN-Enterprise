@@ -89,12 +89,7 @@ namespace Store
         }
 
         private void acceptButton_Click(object sender, EventArgs e)
-        {
-            // TODO
-            //update stock
-            //update order
-            //send email
-
+        {            
             ListViewItem order;
 
             try
@@ -106,11 +101,44 @@ namespace Store
                 return;
             }
 
+            // TODO (check tasks done below)
+            //update stock [ ]
+            //update order [ ]
+            //send email   [ ]
+
+            //  order.SubItems
+            //updt book stock GUI
+
+            int actualStock, orderQtd;
+
+            ListViewItem book = listView1.FindItemWithText(order.Name);
+
+            actualStock = int.Parse(book.SubItems[1].Text);
+            orderQtd = int.Parse(order.SubItems[1].Text);
+            
+            ShipOrderMessage msg = new ShipOrderMessage()
+            {
+                bookTitle = order.SubItems[0].Text,
+                qtd = int.Parse(order.SubItems[1].Text),
+                id = order.SubItems[2].Text
+            };
+
+            commHandler.sendMsg("checkStockOrders", msg.getJSON());
+
             ordersListView.BeginInvoke((Action)(() =>
             {
                 ordersListView.SelectedItems[0].Remove();
             }));
         }
+
+        public void updateBookStock(string bookName, int value)
+        {
+            listView1.BeginInvoke((Action)(() =>
+                {
+                    listView1.FindItemWithText(bookName).SubItems[1].Text = value.ToString();
+                }));
+        }
+
 
         public void showInitialBooks(JObject books)
         {

@@ -42,8 +42,6 @@ function receiveMsgs() {
         guiSocket.sendMsg("acceptOrder", msg.content.toString());
 
     }, { noAck: true });
-
-    //send to socket or call function
 }
 
 module.exports = {

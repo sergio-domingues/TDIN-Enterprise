@@ -20,12 +20,6 @@ namespace Store
 
         override public void receiveMsg()
         {
-            if(socket == null)
-            {
-                Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>NULLLLLL");
-            }
-
-
             socket.On("info", (data) =>
             {
                 Console.WriteLine(data);
@@ -36,22 +30,17 @@ namespace Store
 
             socket.On("orderList", (data) =>
             {
-                Console.WriteLine(data);
                 gui.initialOrdersView((string)data);
             });
 
             socket.On("acceptOrder", (data) =>
             {
-                Console.WriteLine(">>>>>>>>accept order>>>> ", data);
-
-                //todo
                 gui.addOrderView((string) data);
 
             });
 
             socket.On("booksList", ( data) =>
             {
-                Console.WriteLine(data);
                 gui.showInitialBooks((JObject) data);
             });
         }

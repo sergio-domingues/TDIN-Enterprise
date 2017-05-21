@@ -40,7 +40,6 @@ function receiveMsgs() {
         guiSocket.sendMsg("order", msg.content.toString());
 
     }, { noAck: true });
-
 }
 
 

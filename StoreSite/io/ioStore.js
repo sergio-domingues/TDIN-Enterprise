@@ -40,6 +40,28 @@ io.on('connection', function (socket) {
 
         storeSocket.emit("orderList", "");
     });
+    
+    storeSocket.on("checkStockOrders", function (msg) {
+
+        var json = JSON.parse(msg);
+
+        db.getPendingOrders(val, function(pedingOrders) {
+                        
+            db.getBookStock(json.BookTitle, function(stock){
+
+            });                
+
+        });
+
+
+        //get all pending orders
+
+        var fullStock = bookStock + json.qtd;
+
+        //iterate over all orders and try to fulfill them
+        
+
+    });
 
     storeSocket.on('order', function (msg) {
         console.log('message received: ', 'order\n', msg);
