@@ -36,11 +36,14 @@ namespace Warehouse
             }
                                  
             ShipOrderMessage msg = new ShipOrderMessage()
-            {
+            {                
                 clientName = order.SubItems[0].Text,
-                id = order.SubItems[4].Text,
-                qtd = int.Parse(order.SubItems[2].Text)
+                bookTitle = order.SubItems[1].Text,
+                qtd = int.Parse(order.SubItems[2].Text),
+                id = order.SubItems[4].Text
             };
+
+            //todo WAREHOUSE DB UPDATE ORDER STATUS
 
             warehouseHandler.sendMsg("shipping", msg.getJSON());
 

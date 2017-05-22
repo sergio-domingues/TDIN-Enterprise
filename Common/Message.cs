@@ -69,14 +69,14 @@ namespace Common
     }
 
     [Serializable]
-    public class ShipOrderMessage
+    public class ShipOrderMessage : Message
     {
-        public string clientName, id;
+        public string id;
         public int qtd;
 
         public ShipOrderMessage() { }
 
-        public string getJSON()
+        public override string getJSON()
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
             Console.WriteLine(JsonConvert.SerializeObject(this, Formatting.Indented));

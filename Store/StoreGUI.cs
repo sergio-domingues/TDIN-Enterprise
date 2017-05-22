@@ -77,7 +77,7 @@ namespace Store
             {
                 bookTitle = book.SubItems[0].Text,
                 clientName = "TODO NOME DA TEXTBOX",
-                //todo ir buscar quantidade
+                //todo ir buscar quantidade e enviar com + 10
                 quantity = 10,             
                 address = "TODO",
                 emailAddress = "TODO",
@@ -89,12 +89,7 @@ namespace Store
         }
 
         private void acceptButton_Click(object sender, EventArgs e)
-        {
-            // TODO
-            //update stock
-            //update order
-            //send email
-
+        {            
             ListViewItem order;
 
             try
@@ -106,11 +101,45 @@ namespace Store
                 return;
             }
 
+            // TODO (check tasks done below)
+            //update stock [ ]
+            //update order [ ]
+            //send email   [ ]
+
+            //  order.SubItems
+            //updt book stock GUI  there is a method ehre for this
+            
+            ListViewItem book = listView1.FindItemWithText(order.Name);
+            
+            ShipOrderMessage msg = new ShipOrderMessage()
+            {
+                bookTitle = order.SubItems[0].Text,
+                qtd = int.Parse(order.SubItems[1].Text),
+                id = order.SubItems[2].Text
+            };
+
+            commHandler.sendMsg("checkStockOrders", msg.getJSON());
+
             ordersListView.BeginInvoke((Action)(() =>
             {
                 ordersListView.SelectedItems[0].Remove();
             }));
         }
+
+        public void updateBookStock(string data)
+        {
+            var json = JObject.Parse(data);
+
+            Console.WriteLine(">>>>>>>>>>>CENASSSSSSSA", json.ToString());
+
+            listView1.BeginInvoke((Action)(() =>
+                {
+                    Console.WriteLine("title>>>>>>>>>>>>", listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text);
+
+                    listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text = /*json["stock"].ToString()*/ "20";
+                }));
+        }
+
 
         public void showInitialBooks(JObject books)
         {
@@ -167,7 +196,7 @@ namespace Store
 
             ordersListView.BeginInvoke((Action)(() =>
             {
-                ListViewItem lvItem = new ListViewItem(shipOrder["clientName"].ToString());
+                ListViewItem lvItem = new ListViewItem(shipOrder["bookTitle"].ToString());
                 lvItem.SubItems.Add(shipOrder["qtd"].ToString());
                 lvItem.SubItems.Add(shipOrder["id"].ToString());
 

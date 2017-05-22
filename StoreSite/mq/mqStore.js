@@ -50,8 +50,6 @@ function receiveMsgs() {
         
 
     }, { noAck: true });
-
-    //send to socket or call function
 }
 
 module.exports.sendMsg = sendMsg;

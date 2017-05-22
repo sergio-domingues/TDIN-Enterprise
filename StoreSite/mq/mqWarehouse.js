@@ -46,10 +46,7 @@ function receiveMsgs() {
         
 
     }, { noAck: true });
-
 }
 
 
-module.exports = {
-    sendMsg,
-};
+module.exports.sendMsg = sendMsg;
