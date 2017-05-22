@@ -84,5 +84,8 @@ transition: width  0.2s ease-in-out;
     width: 260px;
 }   
 
-
+img{
+    height: 300px;
+    width: 300px;
+}
 

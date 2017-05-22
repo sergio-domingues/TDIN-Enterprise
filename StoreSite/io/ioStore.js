@@ -77,15 +77,18 @@ io.on('connection', function (socket) {
 
             db.getOrderInfo(json.id, function (data) {
                 
-                email = data[0].email;
+                email = data[0].Email;
 
                 msg = "Your order <" + json.id + "> will be " + acceptState + "\n";
                 msg += "Details:\n" + "Book title: " + data[0].BookTitle   + "\n" +
-                       "Quantity: "+ data[0].Quantity + "\n" + "Adress: " + data[0].Adress;
+                       "Quantity: "+ data[0].Quantity + "\n" + "Address: " + data[0].Address;
+
+                utils.sendEmail(email, msg, "Your Bookstore Order");
             });
             
             //send email
-            utils.sendEmail(email, msg, "Your Bookstore Order");
+
+            
 
             //tries to fullfill more orders
             db.getPendingOrders(json.bookTitle, state, function (pendingOrders) {
