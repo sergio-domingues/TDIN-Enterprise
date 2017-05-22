@@ -43,6 +43,4 @@ function receiveMsgs() {
 }
 
 
-module.exports = {
-    sendMsg,
-};
+module.exports.sendMsg = sendMsg;
