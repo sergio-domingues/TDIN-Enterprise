@@ -42,7 +42,6 @@ io.on('connection', function (socket) {
     warehouseSocket.on('getOrders', function (msg) {
         console.log('message received: ', 'getOrders\n', msg);
 
-        console.log("que crl");
         db.getOrdersInfo(function(orders){
             console.log(orders);
             warehouseSocket.emit("orderList", { data: orders });

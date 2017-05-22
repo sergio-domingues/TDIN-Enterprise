@@ -43,7 +43,7 @@ function receiveMsgs() {
         
         
         var obj = JSON.parse(msg.content.toString());
-        console.log("CARALHO " + obj.id);
+        
         db.uptadeOrderState(obj.id, "The dispatch of your order should occur at " + utils.get2daysDate() , function(){
             guiSocket.sendMsg("acceptOrder", msg.content.toString());
         });

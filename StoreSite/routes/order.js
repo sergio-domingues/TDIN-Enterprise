@@ -4,6 +4,8 @@ var db = require('../database/database.js');
 var utils = require('../public/js/utils.js');
 var mqStore = require('../mq/mqStore.js');
 
+var guiSocket = require('../io/ioStore');
+
 /* GET home page. */
 router.get('/:title', function(req, res, next) {
 	var title = req.params.title;
@@ -33,6 +35,11 @@ router.post('/purchase/:title', function(req, res, next){
 					 + "Total price: " + price * req.body.quantity + "\n\n\n"
 					 + "Your order will be dispatched on " + utils.getDate();
 					utils.sendEmail(req.body.email, msg, "Your BookStore order");
+
+					let newStock = stock - req.body.quantity;
+
+					guiSocket.sendMsg("updateBook", { bookTitle: title, stock: newStock });
+
 					res.redirect('/');
 				});
 				
