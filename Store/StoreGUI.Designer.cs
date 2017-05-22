@@ -86,7 +86,7 @@
             this.Quantity,
             this.id});
             this.ordersListView.FullRowSelect = true;
-            this.ordersListView.Location = new System.Drawing.Point(586, 39);
+            this.ordersListView.Location = new System.Drawing.Point(589, 39);
             this.ordersListView.MultiSelect = false;
             this.ordersListView.Name = "ordersListView";
             this.ordersListView.Size = new System.Drawing.Size(141, 160);

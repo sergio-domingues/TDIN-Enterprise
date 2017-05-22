@@ -1,4 +1,5 @@
 ﻿using Common;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,13 +32,19 @@ namespace Warehouse
             socket.On("orderList", (data) =>
             {
                 Console.WriteLine(data);
-                gui.initialOrdersView((string)data);
+                gui.initialOrdersView((JObject)data);
             });
             
             socket.On("order", (data) =>
             {
                 Console.WriteLine(">>>>>>>>CHANGING GUI: " , data);
                 gui.addOrderView((string)data);
+            });
+
+            socket.On("ordersList", (data) =>
+            {
+                Console.WriteLine(data);
+                gui.showInitialBooks((JObject)data);
             });
 
         }

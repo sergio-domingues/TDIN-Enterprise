@@ -101,11 +101,26 @@ function uptadeOrderState(orderId, state, next){
 	}
 }
 
-function getPendingOrders(state, next){
+function getPendingOrders(title, state, next){
 	if(typeof next === 'function'){
-		db.all("SELECT * from Orders where State = " + "\x27" + state + "\x27", function(err, rows){
+		db.all("SELECT * from Orders where State = " + "\x27" + state + "\x27 and BookTitle = " + "\x27" + title + "\x27", function(err, rows){
 			next(rows);
 		});
+	}
+}
+
+
+
+
+//WAREHOUSE PART
+
+function insertOrder(clientName, bookTitle, quantity, address, email, state, next){
+	if(typeof next === 'function'){
+		var stmt = whdb.prepare("INSERT into Orders(OrderId, BookTitle, Quantity , ClientName, Address, Email, State) VALUES(?, ?, ?, ?, ?, ?, ?)");
+		var id = guid.raw();
+		stmt.run(id, bookTitle, quantity, clientName, address, email, state);
+		stmt.finalize();
+		next(id);
 	}
 }
 

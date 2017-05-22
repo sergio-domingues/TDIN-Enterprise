@@ -6,6 +6,9 @@ var io = require('socket.io')(http);
 
 var mqWarehouse = require('../mq/mqWarehouse');
 
+var db = require('../database/warehouse_database.js');
+
+
 var warehouseSocket;
 
 http.listen(4000, function () {
@@ -17,6 +20,8 @@ io.on('connection', function (socket) {
     console.log('a user connected');
 
     warehouseSocket = socket;
+
+    
 
     warehouseSocket.on('order', function (msg) {
         console.log('message received: ', 'order\n', msg);
@@ -34,10 +39,13 @@ io.on('connection', function (socket) {
     warehouseSocket.on('getOrders', function (msg) {
         console.log('message received: ', 'getOrders\n', msg);
 
-        //TODO
-        //getOrderslist from database
+        console.log("que crl");
+        db.getOrdersInfo(function(orders){
+            console.log(orders);
+            warehouseSocket.emit("orderList", { data: orders });
+        });
 
-        warehouseSocket.emit("orderList", "");
+        
     });
     
     /* socket.disconnect() or socket.close() triggers disconnect event */

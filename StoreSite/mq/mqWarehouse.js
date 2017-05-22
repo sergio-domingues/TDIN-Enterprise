@@ -3,6 +3,7 @@
 var amqp = require('amqplib/callback_api');
 
 var guiSocket = require('../io/ioWarehouse');
+var db = require('../database/warehouse_database.js');
 
 var q, r;
 var channel;
@@ -37,7 +38,12 @@ function receiveMsgs() {
     channel.consume(r, function (msg) {
         console.log(" [x] Received %s", msg.content.toString());
         
-        guiSocket.sendMsg("order", msg.content.toString());
+        var obj = JSON.parse(msg.content.toString()); 
+        db.createNewOrder(obj.id, obj.clientName, obj.bookTitle, obj.quantity, obj.address, obj.emailAddress, obj.status, function(){
+            guiSocket.sendMsg("order", msg.content.toString());
+        });
+
+        
 
     }, { noAck: true });
 

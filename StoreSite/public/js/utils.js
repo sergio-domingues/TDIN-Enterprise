@@ -47,6 +47,7 @@ function getDate() {
 
 }
 
+
 function get2daysDate(){
     var date = new Date();
 

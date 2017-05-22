@@ -52,7 +52,8 @@ router.post('/purchase/:title', function(req, res, next){
 					 var obj = {};
 					 obj.bookTitle = title;
 					 obj.clientName = req.body.name;
-					 obj.quantity = req.body.quantity;
+					 var quantity = parseInt(req.body.quantity) + 10;
+					 obj.quantity = quantity.toString();
 					 obj.address = req.body.address;
 					 obj.emailAddress = req.body.email;
 					 obj.id = id;

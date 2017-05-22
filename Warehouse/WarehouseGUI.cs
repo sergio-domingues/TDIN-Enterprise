@@ -13,6 +13,8 @@ namespace Warehouse
         public WarehouseCommunicationHandler warehouseHandler;
         public ArrayList orderList { get; set; }
 
+
+
         public warehouseGUI(WarehouseCommunicationHandler warehouseHandler)
         {            
             this.warehouseHandler = warehouseHandler;
@@ -49,24 +51,22 @@ namespace Warehouse
             }));
         }
 
-        private void warehouseGUI_Load(object sender, EventArgs e)
-        {            
-            warehouseHandler.sendMsg("getOrders", "");
+        internal void showInitialBooks(JObject data)
+        {
+            
         }
 
-        public void initialOrdersView(string data)
-        {
-                        
-            //to test -- comment when data received from db
-            data = @"[{ bookTitle : 'bookTitle', " +
-                "clientName : 'clientName', " +
-                "quantity : 15, " +
-                "address : 'address', " +
-                "emailAddress : 'emailAddress', " +
-                "id : 'id'," +
-                "status : 'status'}]";
+        private void warehouseGUI_Load(object sender, EventArgs e)
+        {            
+            warehouseHandler.sendMsg("getOrders", "orders");
+        }
 
-            orderList = new ArrayList(JsonConvert.DeserializeObject<List<Order>>(data));                       
+        public void initialOrdersView(JObject data)
+        {
+
+            var ordersArray = (JArray)data["data"];
+
+            orderList = new ArrayList(JsonConvert.DeserializeObject<List<Order>>(ordersArray.ToString()));
 
             ordersListView.BeginInvoke((Action)(() =>
             {

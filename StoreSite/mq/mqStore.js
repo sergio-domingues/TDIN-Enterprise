@@ -54,6 +54,4 @@ function receiveMsgs() {
     //send to socket or call function
 }
 
-module.exports = {
-    sendMsg,
-};
+module.exports.sendMsg = sendMsg;

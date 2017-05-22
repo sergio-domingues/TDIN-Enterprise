@@ -41,7 +41,7 @@ namespace Common
 
         public void sendMsg(string msgType, string msg)
         {
-            Console.WriteLine("sending msg on socket");
+            Console.WriteLine("sending msg on socket " + msgType + " " + msg);
             socket.Emit(msgType, msg);
         }
 
