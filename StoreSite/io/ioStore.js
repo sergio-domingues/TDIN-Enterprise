@@ -40,26 +40,43 @@ io.on('connection', function (socket) {
 
         storeSocket.emit("orderList", "");
     });
-    
+
     storeSocket.on("checkStockOrders", function (msg) {
 
         var json = JSON.parse(msg);
 
-        db.getPendingOrders(val, function(pedingOrders) {
-                        
-            db.getBookStock(json.BookTitle, function(stock){
-
-            });                
-
-        });
-
-
-        //get all pending orders
-
-        var fullStock = bookStock + json.qtd;
-
-        //iterate over all orders and try to fulfill them
+        var state = "Your order is waiting expedition due to the lack of stock, we ask you to be patient";
         
+        db.getBookStock(json.bookTitle, function (bookStock) {
+
+            var fullStock = bookStock + 10; //dont put order qtty
+
+            //fullfill 1st order
+            let today = getTodaysDate();
+            let acceptState = "dispatched at " + today;
+            db.uptadeOrderState(json.id, acceptState, function () { });
+
+            //tries to fullfill more orders
+            db.getPendingOrders(json.bookTitle, state, function (pendingOrders) {
+
+                for (let i = 0; i < pendingOrders.length; i++) {
+                    if (fullStock == 0)
+                        break;
+
+                    if (pendingOrders[i].Quantity <= fullStock) {
+                        db.uptadeOrderState(pendingOrders[i].OrderId, acceptState, function () { });
+                        fullStock -= pendingOrders[i].Quantity;
+                    }
+                }
+
+                //updt book stock
+                if (stock > 0) {
+                    db.IncreaseStock(json.bookTitle, fullStock, function () { })
+                }
+
+                storeSocket.emit("updateBook", { stock: fullStock, title : json.bookTitle});
+            });
+        });
 
     });
 
@@ -70,7 +87,7 @@ io.on('connection', function (socket) {
 
         mqStore.sendMsg(msg);
     });
-    
+
 
     /* socket.disconnect() or socket.close() triggers disconnect event */
     storeSocket.on('disconnect', function () {
@@ -80,9 +97,22 @@ io.on('connection', function (socket) {
 });
 
 function sendMsg(msg, data) {
-   console.log('check 1 >>>>>>>>>>>>>>');
+    console.log('check 1 >>>>>>>>>>>>>>');
 
-   io.emit(msg, data);
+    io.emit(msg, data);
+}
+
+function getTodaysDate() {
+    var date = new Date();
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+
+    return day + "/" + month + "/" + year;
 }
 
 module.exports.sendMsg = sendMsg;

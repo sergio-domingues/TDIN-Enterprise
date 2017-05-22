@@ -43,6 +43,13 @@ namespace Store
             {
                 gui.showInitialBooks((JObject) data);
             });
+
+            socket.On("updateBook", (data) =>
+            {             
+                gui.updateBookStock((string)data);
+            });
+
+
         }
     }
 }

@@ -107,14 +107,9 @@ namespace Store
             //send email   [ ]
 
             //  order.SubItems
-            //updt book stock GUI
-
-            int actualStock, orderQtd;
-
+            //updt book stock GUI  there is a method ehre for this
+            
             ListViewItem book = listView1.FindItemWithText(order.Name);
-
-            actualStock = int.Parse(book.SubItems[1].Text);
-            orderQtd = int.Parse(order.SubItems[1].Text);
             
             ShipOrderMessage msg = new ShipOrderMessage()
             {
@@ -131,11 +126,13 @@ namespace Store
             }));
         }
 
-        public void updateBookStock(string bookName, int value)
+        public void updateBookStock(string data)
         {
+            var json = JObject.Parse(data);
+
             listView1.BeginInvoke((Action)(() =>
                 {
-                    listView1.FindItemWithText(bookName).SubItems[1].Text = value.ToString();
+                    listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text = json["stock"].ToString();
                 }));
         }
 
