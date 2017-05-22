@@ -70,7 +70,7 @@ io.on('connection', function (socket) {
                 }
 
                 //updt book stock
-                if (stock > 0) {
+                if (fullStock > 0) {
                     db.IncreaseStock(json.bookTitle, fullStock, function () { })
                 }
 

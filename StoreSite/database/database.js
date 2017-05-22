@@ -71,7 +71,7 @@ function decreaseStock(title, num, next){
 	})
 }
 
-function IncreaseStock(title, num, next){
+function increaseStock(title, num, next){
 	getBookStock(title, function(stock){
 		var stock =  stock + num;
 		db.run("UPDATE Book SET Stock = " + stock + " WHERE Title = " + "\x27" + title + "\x27");
@@ -125,4 +125,4 @@ function insertOrder(clientName, bookTitle, quantity, address, email, state, nex
 }
 
 
-module.exports = {getAllBooksInfo, getBookPrice, getBookStock, createNewSell, createNewOrder, decreaseStock, getOrderInfo, getPendingOrders, uptadeOrderState};
+module.exports = {getAllBooksInfo, getBookPrice, getBookStock, createNewSell, createNewOrder, decreaseStock, getOrderInfo, getPendingOrders, uptadeOrderState, increaseStock};
