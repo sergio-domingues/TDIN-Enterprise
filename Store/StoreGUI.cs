@@ -103,7 +103,7 @@ namespace Store
 
             // TODO (check tasks done below)
             //update stock [ ]
-            //update order [ ]
+            //update order [X]
             //send email   [ ]
 
             //  order.SubItems
@@ -126,17 +126,11 @@ namespace Store
             }));
         }
 
-        public void updateBookStock(string data)
+        public void updateBookStock(JObject json)
         {
-            var json = JObject.Parse(data);
-
-            Console.WriteLine(">>>>>>>>>>>CENASSSSSSSA", json.ToString());
-
             listView1.BeginInvoke((Action)(() =>
                 {
-                    Console.WriteLine("title>>>>>>>>>>>>", listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text);
-
-                    listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text = /*json["stock"].ToString()*/ "20";
+                    listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text = json["stock"].ToString();
                 }));
         }
 
