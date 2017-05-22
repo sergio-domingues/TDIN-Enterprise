@@ -63,6 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderCliForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderCliForm.Designer.cs">
+      <DependentUpon>OrderCliForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreCommunicationHandler.cs" />
     <Compile Include="StoreGUI.cs">
       <SubType>Form</SubType>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Store.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="OrderCliForm.resx">
+      <DependentUpon>OrderCliForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreGUI.resx">
       <DependentUpon>StoreGUI.cs</DependentUpon>
     </EmbeddedResource>
