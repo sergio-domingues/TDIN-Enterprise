@@ -12,12 +12,23 @@ function createNewOrder(id, clientName, bookTitle, quantity, address, email, sta
 
 function getOrdersInfo(next){
 	if(typeof next === 'function'){
-		db.all("SELECT * from Orders", function(err, rows){
+		db.all("SELECT * from Orders where status is not \x27dispatched\x27", function(err, rows){
 			//console.log(rows);
-			next(rows);
+			next(rows);	
+		});
+	}
+}
+
+function updateOrderStatus(orderId, next){
+	if(typeof next === 'function'){
+
+		db.run("UPDATE Orders SET status = " + "\x27dispatched\x27" + " WHERE id = " + "\x27" + orderId + "\x27", function(err, rows){
+			next();
 		});
 	}
 }
 
 
-module.exports = {createNewOrder, getOrdersInfo};
+
+
+module.exports = {createNewOrder, getOrdersInfo, updateOrderStatus};

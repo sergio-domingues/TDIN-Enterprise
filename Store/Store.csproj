@@ -35,15 +35,12 @@
   <ItemGroup>
     <Reference Include="EngineIoClientDotNet, Version=0.9.22.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EngineIoClientDotNet.0.9.22\lib\net45\EngineIoClientDotNet.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="SocketIoClientDotNet, Version=0.9.13.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SocketIoClientDotNet.0.9.13\lib\net45\SocketIoClientDotNet.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,10 +56,15 @@
     <Reference Include="System.Xml" />
     <Reference Include="WebSocket4Net, Version=0.14.1.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
       <HintPath>..\packages\WebSocket4Net.0.14.1\lib\net45\WebSocket4Net.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SellOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellOrder.Designer.cs">
+      <DependentUpon>SellOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreCommunicationHandler.cs" />
     <Compile Include="StoreGUI.cs">
       <SubType>Form</SubType>
@@ -72,6 +74,9 @@
     </Compile>
     <Compile Include="Store.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="SellOrder.resx">
+      <DependentUpon>SellOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreGUI.resx">
       <DependentUpon>StoreGUI.cs</DependentUpon>
     </EmbeddedResource>

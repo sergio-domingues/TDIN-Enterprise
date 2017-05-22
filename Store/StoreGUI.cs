@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Book_Enterprise;
 
 namespace Store
 {
@@ -46,18 +47,11 @@ namespace Store
                 return;
             }
 
+            SellOrder sell = new SellOrder(book);
 
-            SellMessage msg = new SellMessage()
-            {
-                bookTitle = book.SubItems[0].Text,
-                clientName = "TODO NOME DA TEXTBOX",
-                //todo ir buscar quantidade
-                quantity = 10,
-                /* TODO usar qtd para calcular totalprice */
-                totalPrice = 10 * int.Parse(book.SubItems[2].Text)
-            };
+            sell.commHandler = commHandler;
 
-            commHandler.sendMsg("sell", msg.getJSON());
+            sell.Show();
         }
 
         private void orderButton_Click(object sender, EventArgs e)

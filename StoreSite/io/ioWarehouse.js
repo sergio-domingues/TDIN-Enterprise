@@ -31,9 +31,12 @@ io.on('connection', function (socket) {
     warehouseSocket.on('shipping', function (msg) {
         console.log('message received: ', 'shipping\n', msg);
         //warehouseSocket.emit("ack", "received ship order");
-
+        var obj = JSON.parse(msg);
+        db.updateOrderStatus(obj.id, function(){
+            mqWarehouse.sendMsg(msg);
+        });
         //rabbitmq
-        mqWarehouse.sendMsg(msg);
+        
     });
 
     warehouseSocket.on('getOrders', function (msg) {
