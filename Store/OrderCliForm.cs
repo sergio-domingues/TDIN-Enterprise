@@ -38,7 +38,7 @@ namespace Book_Enterprise
                 address = addressTextBox.Text,
                 emailAddress = emailTextBox.Text,
                 id = Guid.NewGuid().ToString(),
-                status = "waiting expedition"
+                status = "Your order is waiting expedition due to the lack of stock, we ask you to be patient"
             };
 
             commHandler.sendMsg("order", msg.getJSON());
