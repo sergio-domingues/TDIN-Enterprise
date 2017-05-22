@@ -60,6 +60,16 @@ function createNewOrder(clientName, bookTitle, quantity, address, email, state, 
 	}
 }
 
+function createNewOrderStore(id, clientName, bookTitle, quantity, address, email, state, next) {
+    if (typeof next === 'function') {
+        var stmt = db.prepare("INSERT into Orders(OrderId, BookTitle, Quantity , ClientName, Address, Email, State) VALUES(?, ?, ?, ?, ?, ?, ?)");       
+        stmt.run(id, bookTitle, quantity, clientName, address, email, state);
+        stmt.finalize();
+        next();
+    }
+}
+
+
 function decreaseStock(title, num, next){
 	getBookStock(title, function(stock){
 		var stock =  stock - num;
@@ -124,4 +134,4 @@ function insertOrder(clientName, bookTitle, quantity, address, email, state, nex
 }
 
 
-module.exports = {getAllBooksInfo, getBookPrice, getBookStock, createNewSell, createNewOrder, decreaseStock, getOrderInfo, getPendingOrders, uptadeOrderState, updateStock};
+module.exports = { getAllBooksInfo, getBookPrice, getBookStock, createNewSell, createNewOrder, decreaseStock, getOrderInfo, getPendingOrders, uptadeOrderState, updateStock, createNewOrderStore };

@@ -51,12 +51,16 @@ io.on('connection', function (socket) {
     storeSocket.on('getOrders', function (msg) {
         console.log('message received: ', 'getOrders\n', msg);
 
+        //db method to get orders to be accepted
+
         storeSocket.emit("orderList", "");
     });
 
     storeSocket.on("checkStockOrders", function (msg) {
 
         var json = JSON.parse(msg);
+
+        console.log(">>>>> CheckStockORder: ", json.id);
 
         var state = "Your order is waiting expedition due to the lack of stock, we ask you to be patient";
         
@@ -72,6 +76,9 @@ io.on('connection', function (socket) {
             var email, msg;
 
             db.getOrderInfo(json.id, function (data) {
+
+                console.log(">>>>>>data:", data);
+
                 email = data[0].email;
 
                 msg = "Your order <" + json.id + "> will be " + acceptState + "\n";
@@ -102,7 +109,7 @@ io.on('connection', function (socket) {
                     db.updateStock(json.bookTitle, fullStock, function () { })
                 }
 
-                storeSocket.emit("updateBook", { stock: fullStock, title : json.bookTitle});
+                storeSocket.emit("updateBook", { stock: fullStock, bookTitle : json.bookTitle});
             });
         });
 
@@ -110,6 +117,10 @@ io.on('connection', function (socket) {
 
     storeSocket.on('order', function (msg) {
         console.log('message received: ', 'order\n', msg);
+
+        let order = JSON.parse(msg);
+
+        db.createNewOrderStore(order.id, order.clientName, order.bookTitle, order.quantity, order.address, order.emailAddress, order.status, function () { });
 
         mqStore.sendMsg(msg);
     });

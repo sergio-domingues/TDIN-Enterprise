@@ -30,7 +30,7 @@ namespace Store
 
             socket.On("orderList", (data) =>
             {
-                gui.initialOrdersView((string)data);
+                //gui.initialOrdersView((string)data);
             });
 
             socket.On("acceptOrder", (data) =>

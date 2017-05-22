@@ -128,8 +128,6 @@ namespace Store
 
         public void updateBookStock(JObject json)
         {
-            Console.WriteLine(">>>>>>>>>> SELL " + json.ToString());
-
             listView1.BeginInvoke((Action)(() =>
                 {
                     listView1.FindItemWithText(json["bookTitle"].ToString()).SubItems[1].Text = json["stock"].ToString();
@@ -158,16 +156,7 @@ namespace Store
 
         
         public void initialOrdersView(string data)
-        {
-            //to test  COMMENT AFTER DB DATA
-            data = @"[{ bookTitle : 'bookTitle', " +
-                "clientName : 'clientName', " +
-                "quantity : 15, " +
-                "address : 'address', " +
-                "emailAddress : 'emailAddress', " +
-                "id : 'id'," +
-                "status : 'status'}]";
-
+        {                    
             acceptOrdersList = new ArrayList(JsonConvert.DeserializeObject<List<Order>>(data));
 
             ordersListView.BeginInvoke((Action)(() =>
