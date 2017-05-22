@@ -5,6 +5,7 @@ var http = require('http').Server(express);
 var io = require('socket.io')(http);
 
 var mqStore = require('../mq/mqStore');
+var utils = require('../public/js/utils');
 
 var storeSocket;
 
@@ -26,17 +27,29 @@ io.on('connection', function (socket) {
 
     storeSocket.on('sell', function (msg) {
         console.log('message received: ', 'sell\n', msg);
-        //storeSocket.emit("info", { data: "data", more: "data" });
 
-        //todo
+        let json = JSON.parse(msg);
+    
         //db
+        db.decreaseStock(json.bookTitle, json.quantity, function () { })
+
+        //receipt
+        let receipt = "------------- Receipt Details --------------\n\n";
+        receipt += "\tBook title: " + json.bookTitle + "\n" +
+               "\tQuantity: " + json.quantity + "\n" +
+               "\tTotal Price:" + json.totalPrice + "\n" +
+               "\tClient: " + json.clientName + "\n\n" +
+                      "--------------------------------------------\n\n";
+
+        console.log(receipt);
+
+        db.getBookStock(json.bookTitle, function (bookStock){
+            storeSocket.emit("updateBook", { bookTitle: json.bookTitle, stock: bookStock });
+        });        
     });
 
     storeSocket.on('getOrders', function (msg) {
         console.log('message received: ', 'getOrders\n', msg);
-
-        //TODO
-        //getOrderslist from database
 
         storeSocket.emit("orderList", "");
     });
@@ -55,6 +68,19 @@ io.on('connection', function (socket) {
             let today = getTodaysDate();
             let acceptState = "dispatched at " + today;
             db.uptadeOrderState(json.id, acceptState, function () { });
+            
+            var email, msg;
+
+            db.getOrderInfo(json.id, function (data) {
+                email = data[0].email;
+
+                msg = "Your order <" + json.id + "> will be " + acceptState + "\n";
+                msg += "Details:\n" + "Book title: " + data[0].BookTitle   + "\n" +
+                       "Quantity: "+ data[0].Quantity + "\n" + "Adress: " + data[0].Adress;
+            });
+            
+            //send email
+            utils.sendEmail(email, msg, "Your Bookstore Order");
 
             //tries to fullfill more orders
             db.getPendingOrders(json.bookTitle, state, function (pendingOrders) {

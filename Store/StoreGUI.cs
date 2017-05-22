@@ -128,9 +128,11 @@ namespace Store
 
         public void updateBookStock(JObject json)
         {
+            Console.WriteLine(">>>>>>>>>> SELL " + json.ToString());
+
             listView1.BeginInvoke((Action)(() =>
                 {
-                    listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text = json["stock"].ToString();
+                    listView1.FindItemWithText(json["bookTitle"].ToString()).SubItems[1].Text = json["stock"].ToString();
                 }));
         }
 
