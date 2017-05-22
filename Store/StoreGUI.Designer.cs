@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.listView1.FullRowSelect = true;
             this.sellButton = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
