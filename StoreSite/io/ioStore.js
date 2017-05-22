@@ -59,6 +59,8 @@ io.on('connection', function (socket) {
             //tries to fullfill more orders
             db.getPendingOrders(json.bookTitle, state, function (pendingOrders) {
                 
+                console.log(">>>>>>>orders", pendingOrders);
+
                 for (let i = 0; i < pendingOrders.length; i++) {
                     if (fullStock == 0)
                         break;
@@ -70,11 +72,10 @@ io.on('connection', function (socket) {
                 }
 
                 //updt book stock
-                if (stock > 0) {
-                    db.IncreaseStock(json.bookTitle, fullStock, function () { })
+                if (fullStock > 0) {
+                    db.updateStock(json.bookTitle, fullStock, function () { })
                 }
 
-                console.log("UPDATE GUI LIVROS");
                 storeSocket.emit("updateBook", { stock: fullStock, title : json.bookTitle});
             });
         });
@@ -83,8 +84,6 @@ io.on('connection', function (socket) {
 
     storeSocket.on('order', function (msg) {
         console.log('message received: ', 'order\n', msg);
-
-        //storeSocket.emit("order", { data: "data", more: "data" });
 
         mqStore.sendMsg(msg);
     });

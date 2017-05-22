@@ -46,7 +46,7 @@ namespace Store
 
             socket.On("updateBook", (data) =>
             {             
-                gui.updateBookStock((string)data);
+                gui.updateBookStock((JObject)data);
             });
 
 
