@@ -54,10 +54,7 @@ namespace Warehouse
             }));
         }
 
-        internal void showInitialBooks(JObject data)
-        {
-            
-        }
+        
 
         private void warehouseGUI_Load(object sender, EventArgs e)
         {            

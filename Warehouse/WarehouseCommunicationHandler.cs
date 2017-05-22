@@ -40,11 +40,7 @@ namespace Warehouse
                 gui.addOrderView((string)data);
             });
 
-            socket.On("ordersList", (data) =>
-            {
-                Console.WriteLine(data);
-                gui.showInitialBooks((JObject)data);
-            });
+            
 
         }
     }
