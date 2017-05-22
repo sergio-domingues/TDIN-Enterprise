@@ -8,23 +8,23 @@ namespace Common
 {
     public class Order
     {
-        public string bookTitle, clientName, address, emailAddress, status, id;
-        public int quantity;
+        public string BookTitle, ClientName, Address, Email, State, OrderId;
+        public int Quantity;
 
         public Order(string bookTitle, string clientName, int quantity, string address, string emailAddress, string status, string id)
         {
-            this.bookTitle = bookTitle;
-            this.clientName = clientName;
-            this.quantity = quantity;
-            this.address = address;
-            this.emailAddress = emailAddress;
-            this.id = id;
-            this.status = status;
+            this.BookTitle = bookTitle;
+            this.ClientName = clientName;
+            this.Quantity = quantity;
+            this.Address = address;
+            this.Email = emailAddress;
+            this.OrderId = id;
+            this.State = status;
         }
         
         public string[] getOrderAttrs ()
         {
-            return new string[] { bookTitle, clientName, quantity.ToString(), address, emailAddress, id.ToString(), status };
+            return new string[] { BookTitle, ClientName, Quantity.ToString(), Address, Email, OrderId.ToString(), State };
         }
 
     }

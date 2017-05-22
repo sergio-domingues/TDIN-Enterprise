@@ -52,8 +52,10 @@ io.on('connection', function (socket) {
         console.log('message received: ', 'getOrders\n', msg);
 
         //db method to get orders to be accepted
+        db.getToAcceptOrdersInfo(function (rows) {
+            storeSocket.emit("orderList", { data: rows });
+        });
 
-        storeSocket.emit("orderList", "");
     });
 
     storeSocket.on("checkStockOrders", function (msg) {

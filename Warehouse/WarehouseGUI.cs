@@ -75,11 +75,11 @@ namespace Warehouse
             {
                 foreach (Order order in orderList)
                 {
-                    ListViewItem lvItem = new ListViewItem(order.clientName);
-                    lvItem.SubItems.Add(order.bookTitle);
-                    lvItem.SubItems.Add(order.quantity.ToString());
-                    lvItem.SubItems.Add(order.status);
-                    lvItem.SubItems.Add(order.id.ToString());
+                    ListViewItem lvItem = new ListViewItem(order.ClientName);
+                    lvItem.SubItems.Add(order.BookTitle);
+                    lvItem.SubItems.Add(order.Quantity.ToString());
+                    lvItem.SubItems.Add(order.State);
+                    lvItem.SubItems.Add(order.OrderId.ToString());
 
                     ordersListView.Items.Add(lvItem);
                 }
@@ -94,11 +94,11 @@ namespace Warehouse
             
             ordersListView.BeginInvoke((Action)(() =>
             {
-                ListViewItem lvItem = new ListViewItem(order.clientName);
-                lvItem.SubItems.Add(order.bookTitle);
-                lvItem.SubItems.Add(order.quantity.ToString());
-                lvItem.SubItems.Add(order.status);
-                lvItem.SubItems.Add(order.id);
+                ListViewItem lvItem = new ListViewItem(order.ClientName);
+                lvItem.SubItems.Add(order.BookTitle);
+                lvItem.SubItems.Add(order.Quantity.ToString());
+                lvItem.SubItems.Add(order.State);
+                lvItem.SubItems.Add(order.OrderId);
 
                 ordersListView.Items.Add(lvItem);
             }));

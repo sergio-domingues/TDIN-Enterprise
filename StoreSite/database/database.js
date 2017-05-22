@@ -101,6 +101,17 @@ function getOrderInfo(orderId, next){
 	}
 }
 
+function getToAcceptOrdersInfo(next) {
+    if (typeof next === 'function') {
+        db.all("SELECT * from Orders where State like '%dispatch %'", function (err, rows) {
+            console.log("SELECT * from Orders where State like '%dispatch %'");
+            console.log(rows);
+            next(rows);
+        });
+    }
+}
+
+
 function uptadeOrderState(orderId, state, next){
 	if(typeof next === 'function'){
 		db.run("UPDATE Orders SET State = " + "\x27" +  state +  "\x27" + " WHERE OrderId = " + "\x27" + orderId + "\x27", function(err, rows){
@@ -134,4 +145,4 @@ function insertOrder(clientName, bookTitle, quantity, address, email, state, nex
 }
 
 
-module.exports = { getAllBooksInfo, getBookPrice, getBookStock, createNewSell, createNewOrder, decreaseStock, getOrderInfo, getPendingOrders, uptadeOrderState, updateStock, createNewOrderStore };
+module.exports = { getAllBooksInfo, getBookPrice, getBookStock, createNewSell, createNewOrder, decreaseStock, getOrderInfo, getPendingOrders, uptadeOrderState, updateStock, createNewOrderStore, getToAcceptOrdersInfo };

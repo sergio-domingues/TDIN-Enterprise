@@ -139,17 +139,19 @@ namespace Store
         }
 
         
-        public void initialOrdersView(string data)
-        {                    
-            acceptOrdersList = new ArrayList(JsonConvert.DeserializeObject<List<Order>>(data));
+        public void initialOrdersView(JObject data)
+        {
+            var toAcceptOrders = (JArray)data["data"];
+
+            acceptOrdersList = new ArrayList(JsonConvert.DeserializeObject<List<Order>>(toAcceptOrders.ToString()));                     
 
             ordersListView.BeginInvoke((Action)(() =>
             {
                 foreach (Order order in acceptOrdersList)
                 {
-                    ListViewItem lvItem = new ListViewItem(order.bookTitle);
-                    lvItem.SubItems.Add(order.quantity.ToString());
-                    lvItem.SubItems.Add(order.id.ToString());
+                    ListViewItem lvItem = new ListViewItem(order.BookTitle);
+                    lvItem.SubItems.Add(order.Quantity.ToString());
+                    lvItem.SubItems.Add(order.OrderId.ToString());
 
                     ordersListView.Items.Add(lvItem);
                 }
