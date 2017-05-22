@@ -77,7 +77,7 @@ namespace Store
             {
                 bookTitle = book.SubItems[0].Text,
                 clientName = "TODO NOME DA TEXTBOX",
-                //todo ir buscar quantidade
+                //todo ir buscar quantidade e enviar com + 10
                 quantity = 10,             
                 address = "TODO",
                 emailAddress = "TODO",
@@ -130,9 +130,13 @@ namespace Store
         {
             var json = JObject.Parse(data);
 
+            Console.WriteLine(">>>>>>>>>>>CENASSSSSSSA", json.ToString());
+
             listView1.BeginInvoke((Action)(() =>
                 {
-                    listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text = json["stock"].ToString();
+                    Console.WriteLine("title>>>>>>>>>>>>", listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text);
+
+                    listView1.FindItemWithText(json["title"].ToString()).SubItems[1].Text = /*json["stock"].ToString()*/ "20";
                 }));
         }
 
@@ -192,7 +196,7 @@ namespace Store
 
             ordersListView.BeginInvoke((Action)(() =>
             {
-                ListViewItem lvItem = new ListViewItem(shipOrder["clientName"].ToString());
+                ListViewItem lvItem = new ListViewItem(shipOrder["bookTitle"].ToString());
                 lvItem.SubItems.Add(shipOrder["qtd"].ToString());
                 lvItem.SubItems.Add(shipOrder["id"].ToString());
 

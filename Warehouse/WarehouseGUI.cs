@@ -37,7 +37,7 @@ namespace Warehouse
             {                
                 clientName = order.SubItems[0].Text,
                 bookTitle = order.SubItems[1].Text,
-                qtd = int.Parse(order.SubItems[2].Text) + 10,
+                qtd = int.Parse(order.SubItems[2].Text),
                 id = order.SubItems[4].Text
             };
 

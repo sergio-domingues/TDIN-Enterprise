@@ -58,7 +58,7 @@ io.on('connection', function (socket) {
 
             //tries to fullfill more orders
             db.getPendingOrders(json.bookTitle, state, function (pendingOrders) {
-
+                
                 for (let i = 0; i < pendingOrders.length; i++) {
                     if (fullStock == 0)
                         break;
@@ -74,6 +74,7 @@ io.on('connection', function (socket) {
                     db.IncreaseStock(json.bookTitle, fullStock, function () { })
                 }
 
+                console.log("UPDATE GUI LIVROS");
                 storeSocket.emit("updateBook", { stock: fullStock, title : json.bookTitle});
             });
         });
@@ -97,8 +98,6 @@ io.on('connection', function (socket) {
 });
 
 function sendMsg(msg, data) {
-    console.log('check 1 >>>>>>>>>>>>>>');
-
     io.emit(msg, data);
 }
 
