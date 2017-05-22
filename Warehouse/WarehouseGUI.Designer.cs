@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.ordersListView = new System.Windows.Forms.ListView();
-            this.ordersListView.FullRowSelect = true;
-            this.shipButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.Client = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BookTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.shipButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ordersListView
@@ -47,12 +46,38 @@
             this.Quantity,
             this.Status,
             this.id});
+            this.ordersListView.FullRowSelect = true;
             this.ordersListView.Location = new System.Drawing.Point(27, 51);
             this.ordersListView.Name = "ordersListView";
             this.ordersListView.Size = new System.Drawing.Size(504, 170);
             this.ordersListView.TabIndex = 0;
             this.ordersListView.UseCompatibleStateImageBehavior = false;
             this.ordersListView.View = System.Windows.Forms.View.Details;
+            // 
+            // Client
+            // 
+            this.Client.Text = "Client";
+            this.Client.Width = 92;
+            // 
+            // BookTitle
+            // 
+            this.BookTitle.Text = "BookTitle";
+            this.BookTitle.Width = 109;
+            // 
+            // Quantity
+            // 
+            this.Quantity.Text = "Quantity";
+            this.Quantity.Width = 51;
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            this.Status.Width = 143;
+            // 
+            // id
+            // 
+            this.id.Text = "id";
+            this.id.Width = 200;
             // 
             // shipButton
             // 
@@ -72,31 +97,6 @@
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Current Orders";
-            // 
-            // Client
-            // 
-            this.Client.Text = "Client";
-            this.Client.Width = 105;
-            // 
-            // BookTitle
-            // 
-            this.BookTitle.Text = "BookTitle";
-            this.BookTitle.Width = 89;
-            // 
-            // Quantity
-            // 
-            this.Quantity.Text = "Quantity";
-            this.Quantity.Width = 56;
-            // 
-            // Status
-            // 
-            this.Status.Text = "Status";
-            this.Status.Width = 57;
-            // 
-            // id
-            // 
-            this.id.Text = "id";
-            this.id.Width = 200;
             // 
             // warehouseGUI
             // 

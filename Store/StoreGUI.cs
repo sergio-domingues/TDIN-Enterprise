@@ -67,19 +67,9 @@ namespace Store
                 return;
             }
 
-            OrderMessage msg = new OrderMessage()
-            {
-                bookTitle = book.SubItems[0].Text,
-                clientName = "TODO NOME DA TEXTBOX",
-                //todo ir buscar quantidade e enviar com + 10
-                quantity = 10,             
-                address = "TODO",
-                emailAddress = "TODO",
-                id = Guid.NewGuid().ToString(),
-                status = "waiting expedition"
-            };
-
-            commHandler.sendMsg("order", msg.getJSON());
+            OrderCliForm form = new OrderCliForm(book.SubItems[0].Text);
+            form.commHandler = commHandler;
+            form.Show();
         }
 
         private void acceptButton_Click(object sender, EventArgs e)
@@ -183,5 +173,6 @@ namespace Store
             }));
         }
 
+      
     }
 }

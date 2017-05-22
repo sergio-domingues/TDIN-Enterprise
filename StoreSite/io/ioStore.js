@@ -59,9 +59,7 @@ io.on('connection', function (socket) {
     storeSocket.on("checkStockOrders", function (msg) {
 
         var json = JSON.parse(msg);
-
-        console.log(">>>>> CheckStockORder: ", json.id);
-
+        
         var state = "Your order is waiting expedition due to the lack of stock, we ask you to be patient";
         
         db.getBookStock(json.bookTitle, function (bookStock) {
@@ -76,9 +74,7 @@ io.on('connection', function (socket) {
             var email, msg;
 
             db.getOrderInfo(json.id, function (data) {
-
-                console.log(">>>>>>data:", data);
-
+                
                 email = data[0].email;
 
                 msg = "Your order <" + json.id + "> will be " + acceptState + "\n";
@@ -92,8 +88,6 @@ io.on('connection', function (socket) {
             //tries to fullfill more orders
             db.getPendingOrders(json.bookTitle, state, function (pendingOrders) {
                 
-                console.log(">>>>>>>orders", pendingOrders);
-
                 for (let i = 0; i < pendingOrders.length; i++) {
                     if (fullStock == 0)
                         break;
@@ -120,7 +114,9 @@ io.on('connection', function (socket) {
 
         let order = JSON.parse(msg);
 
-        db.createNewOrderStore(order.id, order.clientName, order.bookTitle, order.quantity, order.address, order.emailAddress, order.status, function () { });
+        let qtty = (parseInt(order.quantity) - 10).toString();
+
+        db.createNewOrderStore(order.id, order.clientName, order.bookTitle, qtty, order.address, order.emailAddress, order.status, function () { });
 
         mqStore.sendMsg(msg);
     });
